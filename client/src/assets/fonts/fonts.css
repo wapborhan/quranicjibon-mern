@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Anek Bangla';
+    src: url('AnekBangla-Bold.woff2') format('woff2'),
+        url('AnekBangla-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Anek Bangla';
+    src: url('AnekBangla-Regular.woff2') format('woff2'),
+        url('AnekBangla-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anek Bangla';
+    src: url('AnekBangla-Medium.woff2') format('woff2'),
+        url('AnekBangla-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anek Bangla';
+    src: url('AnekBangla-Light.woff2') format('woff2'),
+        url('AnekBangla-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anek Bangla';
+    src: url('AnekBangla-SemiBold.woff2') format('woff2'),
+        url('AnekBangla-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+@font-face {
+    font-family: 'kfgq';
+    src: url('KFGQPCUthmanicScriptHAFS.woff2') format('woff2'),
+        url('KFGQPCUthmanicScriptHAFS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
