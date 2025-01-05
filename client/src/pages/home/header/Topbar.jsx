@@ -22,7 +22,7 @@ const Topbar = () => {
   console.log(today);
   console.log("date", today?.date);
   return (
-    <div className="topbars bg-color1  flex flex-wrap justify-center w-full lg:!pl-[26.5625rem] lg:!px-[1.25rem] !pl-2 !p-0 bg-[#212121]">
+    <div className="topbars bg-color1  flex flex-wrap lg:justify-center justify-between w-full lg:!pl-[26.5625rem] lg:!px-[1.25rem] !pl-3 !p-0 bg-[#212121]">
       <ul className="topbars-info-list mb-0 list-unstyled flex">
         <li className="flex">
           <i className="thm-clr flaticon-sun"></i>

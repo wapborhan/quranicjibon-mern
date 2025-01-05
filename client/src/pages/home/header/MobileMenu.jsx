@@ -25,17 +25,6 @@ const MobileMenu = () => {
             />
           </Link>
         </div>
-        <div className="rspn-cnt">
-          <span>
-            <i className="thm-clr far fa-envelope"></i>
-            <a href="javascript:void(0);" title="">
-              info@youremailid.com
-            </a>
-          </span>
-          <span>
-            <i className="thm-clr fas fa-phone-alt"></i>+96 125 554 24 5
-          </span>
-        </div>
         <span className="rspn-mnu-btn" onClick={() => setMenu(!menu)}>
           <i className="fa fa-list-ul"></i>
         </span>
@@ -44,7 +33,21 @@ const MobileMenu = () => {
         <span className="rspn-mnu-cls" onClick={() => setMenu(!menu)}>
           <i className="fa fa-times"></i>
         </span>
-
+        <div className="lg-mn p-3 mb-8 ">
+          <Link
+            to="/"
+            title="Home"
+            className="cursor-pointer !flex w-full justify-center items-center text-4xl h-full"
+          >
+            <img
+              src="/assets/images/logo-small.png"
+              alt="logo"
+              width={200}
+              height={100}
+              className="invert"
+            />
+          </Link>
+        </div>
         <ul className="mb-0 list-unstyled w-100">
           <NavMenu />
         </ul>

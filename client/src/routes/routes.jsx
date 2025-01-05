@@ -3,6 +3,7 @@ import Root from "../layout/Root";
 import HomePage from "../pages/home/HomePage";
 import About from "../pages/about/About";
 import NotFound from "../layout/NotFound/NotFound";
+import Page from "../layout/Page";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
+        element: <About />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <Page />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/quran",
+        element: <About />,
+      },
+      {
+        path: "/kalema",
+        element: <About />,
+      },
+      {
+        path: "/allah-names",
         element: <About />,
       },
     ],
