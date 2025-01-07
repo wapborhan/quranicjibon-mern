@@ -1,4 +1,3 @@
-import Image from "next/image";
 import bengaliNumerals from "./bengaliNumerals";
 
 const Icon = ({ title, icon, image, activeSurs }) => {
@@ -6,7 +5,7 @@ const Icon = ({ title, icon, image, activeSurs }) => {
     <div className="h-12 w-12 group sm-max:w-10 xl:w-10  flex items-center justify-center relative">
       <h3 className="text-dark dark:bg-barkz group-hover:text-white  dark:text-hadith-deepoffwhite  false style-Kalpurush absolute md-max:text-base text-xl font-medium font-HindSiliguri  group-hover:opacity-100  xl:text-lg">
         {title && bengaliNumerals(title)}
-        {image && <Image src={image} width={100} height={100} alt="I" />}
+        {image && <img src={image} width={100} height={100} alt="I" />}
       </h3>
       <svg
         className={` ${

@@ -1,8 +1,19 @@
 const userRouter = require("./userRouter");
+const nameRouter = require("./nameRouter");
+const kalemaRouter = require("./kalemaRouter");
+
 const routers = [
   {
     path: "/api/user",
     handler: userRouter,
+  },
+  {
+    path: "/api/allah-name",
+    handler: nameRouter,
+  },
+  {
+    path: "/api/kalema",
+    handler: kalemaRouter,
   },
 
   // {
