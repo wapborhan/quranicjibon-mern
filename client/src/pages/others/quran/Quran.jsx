@@ -1,10 +1,21 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import SuraList from "./SuraList";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Loader from "../../../components/shared/Loader";
 
-const Quran = ({ suras }) => {
+const Quran = () => {
+  const [suras, setSuras] = useState([]);
   const [query, setQuery] = useState("");
+  const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    axiosPublic.get("/quran/suras").then((res) => {
+      setSuras(res.data?.data);
+    });
+  }, []);
+
   return (
     <>
       <div className="mt-4 md:mt-0 p-4 flex flex-col md:flex-row md:justify-between items-center space-y-3 md:space-y-0 dark:bg-darks bg-white rounded-xl  dark:text-dark-text">
@@ -20,8 +31,14 @@ const Quran = ({ suras }) => {
           />
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
-        {suras &&
+      <div
+        className={`${
+          suras.length > 0
+            ? "grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5"
+            : "flex justify-center items-center w-full h-full"
+        }`}
+      >
+        {suras.length > 0 ? (
           suras
             .filter(
               (sura) =>
@@ -29,7 +46,12 @@ const Quran = ({ suras }) => {
                 sura?.name_bn.toLowerCase().includes(query.toLowerCase()) ||
                 sura?.index.toLowerCase().includes(query.toLowerCase())
             )
-            .map((sura) => <SuraList sura={sura} key={sura._id} />)}
+            .map((sura) => <SuraList sura={sura} key={sura._id} />)
+        ) : (
+          <div className="flex justify-center items-center w-full h-full">
+            <Loader />{" "}
+          </div>
+        )}
       </div>
     </>
   );

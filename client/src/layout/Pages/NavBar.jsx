@@ -9,20 +9,21 @@ import ToolTip from "../../components/shared/ToolTip";
 
 const navMenu = [
   {
-    title: "Home",
+    title: "নীড় পাতা",
     icon: AiOutlineHome,
     link: "/",
-  },
-  {
-    title: "কুরআন",
-    icon: FaBookQuran,
-    link: "/quran",
   },
   {
     title: "আল্লাহ্‌র নাম",
     icon: TbNumber99Small,
     link: "/allah-names",
   },
+  {
+    title: "কুরআন",
+    icon: FaBookQuran,
+    link: "/quran",
+  },
+
   {
     title: "কালেমা",
     icon: GiBookmarklet,

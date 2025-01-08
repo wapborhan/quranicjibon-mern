@@ -1,51 +1,60 @@
-"use client";
-import SideContentHeader from "@/pages/SideContentHeader";
-import SideContentList from "@/pages/SideContentList";
+import { useSearchParams } from "react-router-dom";
 import SuraDetils from "./SuraDetils";
-import Settings from "@/components/shared/Settings";
 import { useEffect, useState } from "react";
-import axiosInstance from "@/utils/axiosInstance";
-import { useSearchParams } from "next/navigation";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import SideContentHeader from "../../../../layout/Pages/SideContentHeader";
+import SideContentList from "../../../../layout/Pages/SideContentList";
+import Settings from "../../../../components/shared/Settings";
 
-const Suras = ({ suras }) => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-
+const Suras = () => {
+  const [searchParams] = useSearchParams();
+  const suraNumber = searchParams.get("number");
+  const [suras, setSuras] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectsura, setSura] = useState(suras[0]);
+  const [selectsura, setSelectsura] = useState(null);
   const [ayahs, setAyahs] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  const handleDataSubmit = async (data) => {
+  useEffect(() => {
+    // Fetch all suras on component mount
+    axiosPublic.get("/quran/suras").then((res) => {
+      const fetchedSuras = res.data?.data || [];
+      setSuras(fetchedSuras);
+
+      if (fetchedSuras.length > 0) {
+        // Determine which Sura to load initially
+        const initialSura = suraNumber
+          ? fetchedSuras.find((sura) => String(sura.index) === suraNumber)
+          : fetchedSuras[0]; // Default to the first Sura
+        if (initialSura) {
+          handleDataSubmit(initialSura.index);
+        }
+      }
+    });
+  }, [suraNumber]);
+
+  const handleDataSubmit = (suraNo) => {
     setLoading(true);
     try {
-      const ayah = await axiosInstance.get(`/quran/sura/${data}`);
-      setAyahs(ayah.data);
-      const sura = await axiosInstance.get(`/quran/${id}`);
-      setSura(sura.data);
+      Promise.all([
+        axiosPublic(`/quran/sura/ayahs/${suraNo}`).then((ayah) =>
+          setAyahs(ayah.data?.data || [])
+        ),
+        axiosPublic(`/quran/sura/${suraNo}`).then((sura) =>
+          setSelectsura(sura.data?.data || null)
+        ),
+      ]).finally(() => setLoading(false));
     } catch (error) {
-      console.error("Error fetching Ayahs:", error);
-    } finally {
+      console.error("Error fetching data:", error);
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (suras.length > 0 && id) {
-      const selectedSura = suras.find((sura) => sura.index === id);
-      console.log(selectedSura);
-
-      if (selectedSura) {
-        handleDataSubmit(selectedSura.index);
-      } else {
-        handleDataSubmit(suras[0]);
-      }
-    }
-  }, [suras, id]);
   return (
-    <>
-      <div className="hidden md:w-[450px] h-full md:flex flex-col bg-white rounded-2xl dark:bg-darks dark:text-gray-300">
+    <div className="px-2 h-full flex justify-between md:space-x-6 dark:px-0">
+      <div className="hidden md:w-[450px] h-full md:flex flex-col bg-white rounded-2xl dark:bg-darks ">
         <SideContentHeader
-          content={[{ id: 1, name: "Quran", status: "active" }]}
+          content={[{ number: 1, name: "Quran", status: "active" }]}
         />
         <div className="p-2 h-[cal(100%-120px)] overflow-y-auto mb-2">
           <SideContentList suras={suras} handleDataSubmit={handleDataSubmit} />
@@ -58,7 +67,7 @@ const Suras = ({ suras }) => {
       <div className="hidden md:w-[450px] h-full md:flex flex-col bg-white rounded-2xl dark:bg-darks dark:text-gray-300">
         <Settings />
       </div>
-    </>
+    </div>
   );
 };
 

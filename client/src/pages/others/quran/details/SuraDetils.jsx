@@ -1,14 +1,10 @@
-"use client";
-import bengaliNumerals from "@/components/shared/bengaliNumerals";
-import Icon from "@/components/shared/Icon";
-import { toBengaliNumber } from "bengali-number";
-import Image from "next/image";
+import bengaliNumerals from "../../../../components/shared/bengaliNumerals";
 
 const SuraDetils = ({ ayahs, sura, loading }) => {
   return (
     <>
       {loading ? (
-        <div className="hidden animate-pulse h-[80px] w-full md:grid lg:grid-cols-3 items-center  bg-white border-b-2 rounded-t-2xl text-black dark:text-dark-text dark:bg-darks dark:border-gray-500 border-gray-200">
+        <div className="hidden animate-pulse h-[80px] w-full md:grid lg:grid-cols-3 items-center  bg-white border-b-2 rounded-t-2xl text-black dark:text-dark-text dark:bg-darks dark:border-gray-500 border-gray-200 py-5">
           <div className="bg-gray-200 h-12 w-12"></div>
           <div className="text-sm text-center">
             <div className="h-4 bg-gray-200 w-10/12 full"></div> <br />
@@ -16,37 +12,40 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
           </div>
           <div className="text-sm text-center">
             <div className="h-4 bg-gray-200 w-10/12 full"></div> <br />{" "}
-            <div classname="h-4 bg-gray-200 w-10/12 full"></div>
+            <div className="h-4 bg-gray-200 w-10/12 full"></div>
           </div>
         </div>
       ) : (
-        <div className="hidden  px-4 pt-4 w-full md:grid lg:grid-cols-3 items-center  bg-white border-b-2 rounded-t-2xl text-black dark:text-dark-text dark:bg-darks dark:border-gray-500 border-gray-200">
-          {sura.type === "Meccan" ? (
-            <Image
-              src="/assets/images/quran/makkah_dark.png"
+        <div className="hidden  px-4 pt-4 w-full md:grid lg:grid-cols-3 items-center  bg-white border-b-2 rounded-t-2xl !text-black dark:text-dark-text dark:bg-darks dark:border-gray-500 border-gray-200">
+          {sura?.type === "Meccan" ? (
+            <img
+              src="/assets/images/quran/makkah.png"
               alt=""
               width={100}
               height={100}
             />
           ) : (
-            <Image
+            <img
               src="/assets/images/quran/madinah.png"
               alt=""
               width={100}
               height={100}
             />
           )}
-
-          <div className="text-sm text-center block space-y-1">
-            <div className="text-xl font-bold font-kfgq">{sura?.name} </div>
-            <div className="font-HindSiliguri">{sura?.name_bn}</div>
-          </div>
-          <div className="text-sm text-center block space-y-1">
-            <div>{sura?.name_en}</div>
-            <div>
-              {bengaliNumerals(sura.index)} {" আয়াত"}
-            </div>
-          </div>
+          {sura && (
+            <>
+              <div className="text-sm text-center block space-y-1">
+                <div className="text-xl font-bold font-kfgq">{sura?.name} </div>
+                <div className="font-HindSiliguri">{sura?.name_bn}</div>
+              </div>
+              <div className="text-sm text-center block space-y-1">
+                <div>{sura?.name_en}</div>
+                <div>
+                  {bengaliNumerals(sura.index)} {" আয়াত"}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
       <div className="h-[cal(100%-52px)] md:px-4 overflow-y-auto space-y-2  pt-6 md:pt-0 pb-2 md:mt-0 dark:px-2 mb-2">
@@ -69,7 +68,7 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
                     }`}
                   >
                     <div className="w-full space-y-5 items-center md:flex-row justify-between">
-                      <p className="text-dark-text text-right text-2xl dark:!text-white font-kfgq">
+                      <p className="text-black text-right text-2xl dark:!text-black font-kfgq">
                         {loading ? (
                           <div className="h-4 bg-gray-200 w-10/12 ml-auto full"></div>
                         ) : (
@@ -84,7 +83,9 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
                       {loading ? (
                         <div className="h-4 bg-gray-200 w-10/12 full"></div>
                       ) : (
-                        <p className=" font-medium">{ayah?.text}</p>
+                        <p className=" font-medium text-black">
+                          {ayah?.text_bn}
+                        </p>
                       )}
 
                       <br />

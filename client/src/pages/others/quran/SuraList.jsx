@@ -1,15 +1,12 @@
-// import Icon from "@/components/shared/Icon";
-// import bengaliNumerals from "@/components/shared/bengaliNumerals";
-// import { useRouter } from "next/navigation";
 import Icon from "../../../components/shared/Icon";
 import bengaliNumerals from "../../../components/shared/bengaliNumerals";
 import { useNavigate } from "react-router-dom";
 
 const SuraList = ({ sura }) => {
-  const router = useNavigate();
+  let navigate = useNavigate();
 
   const handleClick = (sura) => {
-    router.push(`/quran/sura?id=${sura.index}`);
+    navigate(`/quran/sura?number=${sura.index}`);
   };
   return (
     <div

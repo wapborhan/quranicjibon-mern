@@ -7,6 +7,8 @@ import Page from "../layout/Page";
 import Quran from "../pages/others/quran/Quran";
 import AllahName from "../pages/others/names/AllahName";
 import Kalema from "../pages/others/kalema/Kalema";
+import CoomingSoon from "../components/CoomingSoon";
+import Suras from "../pages/others/quran/details/Suras";
 
 const router = createBrowserRouter([
   {
@@ -38,8 +40,32 @@ const router = createBrowserRouter([
         element: <Quran />,
       },
       {
+        path: "/quran/sura",
+        element: <Suras />,
+      },
+      {
         path: "/kalema",
         element: <Kalema />,
+      },
+      {
+        path: "/salat",
+        element: <CoomingSoon />,
+      },
+      {
+        path: "/sawm",
+        element: <CoomingSoon />,
+      },
+      {
+        path: "/zakat",
+        element: <CoomingSoon />,
+      },
+      {
+        path: "/hajj",
+        element: <CoomingSoon />,
+      },
+      {
+        path: "/tasbih",
+        element: <CoomingSoon />,
       },
     ],
   },

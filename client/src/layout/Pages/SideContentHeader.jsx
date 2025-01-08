@@ -7,10 +7,10 @@ const SideContentHeader = ({ content }) => {
     <div className="md:min-h-[120px]">
       <div className="flex justify-between gap-1 border-b text-xl">
         {content?.length > 0 &&
-          content?.map((item) => {
+          content?.map((item, idx) => {
             return (
               <button
-                key={item?.id}
+                key={idx}
                 // onClick={() => setState("book")}
                 className={`w-full py-3 ${
                   item?.status === "active"
