@@ -1,5 +1,4 @@
-import Link from "next/link";
-import React from "react";
+import { Link } from "react-router-dom";
 
 const List = ({ suras }) => {
   return (
@@ -22,7 +21,7 @@ const List = ({ suras }) => {
                 </div>
                 <div className="learn-post-info">
                   <Link
-                    href={`/quran/sura/${item.index}`}
+                    to={`/quran/sura?number=${item.index}`}
                     className="cursor-pointer"
                   >
                     <h4 className="mb-1">

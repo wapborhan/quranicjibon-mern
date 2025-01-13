@@ -1,6 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { Link } from "react-router-dom";
 import List from "./List";
 
 const Quran = ({ suras }) => {
@@ -24,7 +22,7 @@ const Quran = ({ suras }) => {
           <div className="grid lg:grid-cols-2 grid-cols-1">
             <div className="col-span">
               <div className="learn-img w-full">
-                <Image
+                <img
                   height={250}
                   width={300}
                   className="lg:w-10/12 w-full h-auto"
@@ -45,7 +43,7 @@ const Quran = ({ suras }) => {
                     </h3>
                   </div>
                   <div className="learn-top-inner">
-                    <Link href="/quran" className="text-decoration-none">
+                    <Link to="/quran" className="text-decoration-none">
                       সম্পূর্ণ কুরআন
                       <i className="fas fa-angle-double-right"></i>
                     </Link>

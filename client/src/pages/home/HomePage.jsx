@@ -11,15 +11,28 @@ import Listen from "./listen/Listen";
 import Counter from "./counter/Counter";
 import Pillar from "./pillar/Pillar";
 import Footer from "./footer/Footer";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Quran from "./quran/Quran";
 
 const HomePage = () => {
+  const [suras, setSuras] = useState([]);
+  const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    axiosPublic.get("/quran/suras").then((res) => {
+      const suras = res.data?.data;
+      const limitSura = suras.slice(0, 8);
+      setSuras(limitSura);
+    });
+  }, []);
   return (
     <>
       <Header />
       <Banner />
       <Prayer />
       <Listen />
-      {/* <Quran suras={data} /> */}
+      <Quran suras={suras} />
       <Counter />
       <Pillar />
       <Footer />
