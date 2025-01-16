@@ -9,6 +9,7 @@ import AllahName from "../pages/others/names/AllahName";
 import Kalema from "../pages/others/kalema/Kalema";
 import CoomingSoon from "../components/CoomingSoon";
 import Suras from "../pages/others/quran/details/Suras";
+import Salat from "../pages/others/salat/Salat";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/salat",
-        element: <CoomingSoon />,
+        element: <Salat />,
       },
       {
         path: "/sawm",

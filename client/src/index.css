@@ -500,3 +500,34 @@ span {
     stroke-dashoffset: -440;
   }
 }
+
+/*  */
+
+.rakat table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid;
+}
+
+.rakat table tbody td {
+  padding: 10px 30px;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+.rakat table thead td {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.ins-list {
+  @apply p-3 hover:bg-gray-100 hover:text-black rounded-xl w-full text-center grid grid-cols-3 justify-start items-center gap-5;
+}
+
+.ins-list .text {
+  @apply py-3 px-5 text-white rounded-lg text-nowrap;
+}
+.ins-list .text ~ span {
+  @apply col-span-2 text-start;
+}
