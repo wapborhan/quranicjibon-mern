@@ -57,7 +57,7 @@ const MobileMenu = () => {
         >
           <div
             className="ps__thumb-x"
-            tabindex="0"
+            tabIndex="0"
             // style="left: 0px; width: 0px;"
           ></div>
         </div>
@@ -67,7 +67,7 @@ const MobileMenu = () => {
         >
           <div
             className="ps__thumb-y"
-            tabindex="0"
+            tabIndex="0"
             // style="top: 0px; height: 0px;"
           ></div>
         </div>

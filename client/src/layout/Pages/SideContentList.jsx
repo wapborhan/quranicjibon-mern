@@ -45,12 +45,12 @@ const SideContentList = ({ suras, handleDataSubmit }) => {
               ref={(el) => (suraRefs.current[index] = el)} // Assign ref to each sura item
               className={`w-full p-5 group cursor-pointer !text-black flex justify-between items-center space-x-3 rounded-2xl transition-all duration-500 dark:border-0 border-2 border-slate-100 ${
                 isActive
-                  ? "dark:bg-[#dfdfdf] border-2 border-slate-800 bg-[#ebfcf6]"
+                  ? "dark:bg-[#f3f3f3] border-2 border-slate-800 bg-[#ebfcf6]"
                   : "dark:bg-darkz"
               }`}
             >
               <div className="flex justify-center items-center w-12 h-12">
-                <Icon title={sura?.index} active={isActive} />
+                <Icon title={sura?.index} active={isActive} color="#2b9e76" />
               </div>
               <div className="w-full flex justify-between items-center">
                 <div className="first">

@@ -14,8 +14,6 @@ const Prayer = () => {
     });
   }, [latitude, longitude, getTodayTimings]);
 
-  console.log(prayerTime);
-
   return (
     <section>
       <div className="w-full relative">

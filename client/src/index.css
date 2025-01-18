@@ -5,6 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.6 0.17 147.26) transparent;
+} */
+
 .dark .dark\:bg-darks {
   --tw-bg-opacity: 1;
   background-color: rgb(32 32 32 / var(--tw-bg-opacity));
@@ -53,19 +58,19 @@ input[type="range"] {
 }
 
 ::-webkit-scrollbar {
-  @apply w-2 my-10;
+  @apply w-[6px] my-10;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-none;
+  /* @apply bg-none; */
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 w-2 rounded-[5px];
+  @apply bg-[#0a993c] w-[6px] rounded-[5px];
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-300;
+  @apply bg-[#36ca6a];
 }
 
 .slick-prev,
@@ -530,4 +535,11 @@ td {
 }
 .ins-list .text ~ span {
   @apply col-span-2 text-start;
+}
+
+.quran.details .menu-item {
+  @apply p-1 bg-gray-100 border-[1px] flex flex-col gap-2 text-black hover:bg-[#2b9e76] hover:text-white rounded-lg w-full text-center cursor-pointer;
+}
+.quran.details {
+  @apply flex flex-col gap-2 transition-all;
 }

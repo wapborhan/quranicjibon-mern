@@ -9,7 +9,7 @@ const Rakat = () => {
           {" "}
           ৫ ওয়াক্ত নামাজের রাকাত সমূহ
         </h1>
-        <div className="flex items-start gap-5 w-full">
+        <div className="flex lg:flex-row  flex-col items-start gap-5 w-full">
           <table className="table">
             <thead>
               <tr>

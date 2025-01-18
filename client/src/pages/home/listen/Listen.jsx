@@ -44,7 +44,7 @@ const Listen = () => {
             backgroundImage: `url("/assets/images/parallax-bg5.jpg")`,
           }}
         ></div>
-        <image
+        <img
           height={3000}
           width={1200}
           className="img-fluid sec-top-mckp absolute"

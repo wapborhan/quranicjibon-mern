@@ -1,6 +1,10 @@
+import { useState } from "react";
 import bengaliNumerals from "../../../../components/shared/bengaliNumerals";
+import AyahsTrans from "./AyahsTrans";
+import AyahsRead from "./AyahsRead";
 
 const SuraDetils = ({ ayahs, sura, loading }) => {
+  const [activeTab, setActiveTab] = useState(1);
   return (
     <>
       {loading ? (
@@ -16,7 +20,7 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
           </div>
         </div>
       ) : (
-        <div className="hidden  px-4 pt-4 w-full md:grid lg:grid-cols-3 items-center  bg-white border-b-2 rounded-t-2xl !text-black dark:text-dark-text dark:bg-darks dark:border-gray-500 border-gray-200">
+        <div className="hidden text-center px-4 pt-4 w-full md:grid lg:grid-cols-4 items-center  bg-white border-b-2 rounded-t-2xl !text-black dark:text-dark-text dark:bg-darks dark:border-gray-500 border-gray-200">
           {sura?.type === "Meccan" ? (
             <img
               src="/assets/images/quran/makkah.png"
@@ -44,6 +48,29 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
                   {bengaliNumerals(sura.index)} {" আয়াত"}
                 </div>
               </div>
+              <div className="flex gap-3">
+                <div className="flex flex-col">
+                  <ul className="flex flex-col items-center  transition rounded-full p-1 relative">
+                    <li
+                      className={`${
+                        activeTab === 1 && " !text-[#fff] !bg-[#2b9e76]"
+                      } px-5 py-[2px]  text-[#424242] z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
+                      onClick={() => setActiveTab(1)}
+                    >
+                      অনুবাদ
+                    </li>
+                    <li
+                      className={`${
+                        activeTab === 2 && " !text-[#fff] !bg-[#2b9e76]"
+                      } px-5 py-[2px]  text-[#424242] z-20 transition duration-300 rounded-full border-transparent cursor-pointer`}
+                      onClick={() => setActiveTab(2)}
+                    >
+                      পড়া
+                    </li>
+                  </ul>
+                </div>
+                <div className="audio"></div>
+              </div>
             </>
           )}
         </div>
@@ -53,55 +80,12 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
           // onClick={() => setMenu(!menu)}
           className="md:hidden p-4 flex items-center space-x-2 bg-white rounded-xl cursor-pointer dark:bg-darks"
         >
-          {/* <AiOutlineMenu size={20} /> */}A
+          {/* <AiOutlineMenu size={20} /> */} Name{" "}
           <span className="text-xl">{sura?.name}</span>
         </div>
-        <div className="space-y-2 ">
-          {ayahs &&
-            ayahs.map((ayah) => {
-              return (
-                <>
-                  <div
-                    key={ayah._id}
-                    className={`w-full dark:text-dark-text p-5 group  bg-white  flex justify-between  gap-5 space-x-4 md:space-x-2 items-start border-gray-100 dark:border-gray-0 border-[0.3px] dark:border-[0px] rounded-xl md:hover:rounded-xl transition-all duration-500 dark:bg-darkz shadow-sm ${
-                      loading && "animate-pulse"
-                    }`}
-                  >
-                    <div className="w-full space-y-5 items-center md:flex-row justify-between">
-                      <p className="text-black text-right text-2xl dark:!text-black font-kfgq">
-                        {loading ? (
-                          <div className="h-4 bg-gray-200 w-10/12 ml-auto full"></div>
-                        ) : (
-                          <>
-                            {ayah?.uthmani}{" "}
-                            <span className="font-kfgq mr-3">
-                              {parseInt(ayah.ayah_id).toLocaleString("ar-EG")}
-                            </span>
-                          </>
-                        )}
-                      </p>
-                      {loading ? (
-                        <div className="h-4 bg-gray-200 w-10/12 full"></div>
-                      ) : (
-                        <p className=" font-medium text-black">
-                          {ayah?.text_bn}
-                        </p>
-                      )}
-
-                      <br />
-                    </div>
-                    {/* <div className="w-16">
-                    <Icon title={ayah?.ayah_id} />
-                  </div> */}
-                  </div>
-                </>
-              );
-            })}
-        </div>
+        {activeTab === 1 && <AyahsTrans ayahs={ayahs} loading={loading} />}
+        {activeTab === 2 && <AyahsRead ayahs={ayahs} loading={loading} />}
       </div>{" "}
-      {/* {menu &&
-            <Menu {...{ name, menu, setMenu, state, setState, page, handleChange }} />
-        } */}
     </>
   );
 };
