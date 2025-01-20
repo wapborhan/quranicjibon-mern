@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
-import useTodayPrayerTime from "../../../hooks/useTodayPrayerTime";
 import { timingFormatter } from "../../../components/shared/timingFormatter";
+import usePrayerTime from "../../../hooks/usePrayerTime";
 
 const SalatTime = () => {
-  const [prayerTime, setPrayerTime] = useState();
-  const latitude = "23.908775911770977";
-  const longitude = "89.12264749493718";
-  const { getTodayTimings } = useTodayPrayerTime();
+  const [prayerTime] = usePrayerTime({
+    latitude: 23.908775911770977,
+    longitude: 89.12264749493718,
+  });
 
-  useEffect(() => {
-    getTodayTimings(latitude, longitude).then((res) => {
-      setPrayerTime(res.timings);
-    });
-  }, [latitude, longitude, getTodayTimings]);
-
-  console.log(prayerTime);
   return (
     <section>
       <div className="w-full bg-white dark:bg-darks dark:text-dark-text mt-10 p-4 rounded-xl">

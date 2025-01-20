@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
 import { timingFormatter } from "../../../components/shared/timingFormatter";
-import useTodayPrayerTime from "../../../hooks/useTodayPrayerTime";
+import usePrayerTime from "../../../hooks/usePrayerTime";
 
 const Topbar = () => {
-  const [prayerTime, setPrayerTime] = useState();
-  const [today, setToday] = useState();
-  const latitude = "23.908775911770977";
-  const longitude = "89.12264749493718";
-  const { getTodayTimings } = useTodayPrayerTime();
-
-  useEffect(() => {
-    getTodayTimings(latitude, longitude).then((res) => {
-      setPrayerTime(res.timings);
-      setToday(res?.date?.hijri);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [latitude, longitude]);
-
-  const hijriDay = today?.day + today?.month.en;
+  const [prayerTime] = usePrayerTime({
+    latitude: 23.908775911770977,
+    longitude: 89.12264749493718,
+  });
 
   return (
     <div className="topbars bg-color1  flex flex-wrap lg:justify-center justify-between w-full lg:!pl-[26.5625rem] lg:!px-[1.25rem] !pl-3 !p-0 bg-[#212121]">

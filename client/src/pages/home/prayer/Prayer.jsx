@@ -1,18 +1,21 @@
-import { useState, useEffect } from "react";
+import usePrayerTime from "../../../hooks/usePrayerTime";
 import Contents from "./Contents";
-import useTodayPrayerTime from "../../../hooks/useTodayPrayerTime";
 
 const Prayer = () => {
-  const [prayerTime, setPrayerTime] = useState();
-  const latitude = "23.908775911770977";
-  const longitude = "89.12264749493718";
-  const { getTodayTimings } = useTodayPrayerTime();
+  const [prayerTime] = usePrayerTime({
+    latitude: 23.908775911770977,
+    longitude: 89.12264749493718,
+  });
 
-  useEffect(() => {
-    getTodayTimings(latitude, longitude).then((res) => {
-      setPrayerTime(res.timings);
-    });
-  }, [latitude, longitude, getTodayTimings]);
+  // const latitude = "23.908775911770977";
+  // const longitude = "89.12264749493718";
+  // const { getTodayTimings } = useTodayPrayerTime();
+
+  // useEffect(() => {
+  //   getTodayTimings(latitude, longitude).then((res) => {
+  //     setPrayerTime(res.timings);
+  //   });
+  // }, [latitude, longitude, getTodayTimings]);
 
   return (
     <section>

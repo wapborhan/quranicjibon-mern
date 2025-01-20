@@ -507,23 +507,27 @@ span {
 }
 
 /*  */
-
-.rakat table,
-th,
+table {
+  width: 100%;
+}
+.rakat table th,
 td {
   border-collapse: collapse;
   border: 1px solid;
 }
 
-.rakat table tbody td {
-  padding: 10px 30px;
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-}
-.rakat table thead td {
+.rakat table thead td,
+.ramjan.calender table thead td {
   padding: 10px 5px;
   text-align: center;
+}
+
+.rakat table tbody td,
+.ramjan.calender table tbody td {
+  padding: 10px 30px;
+  text-align: center;
+  /* margin: 0 auto; */
+  /* width: 100%; */
 }
 
 .ins-list {

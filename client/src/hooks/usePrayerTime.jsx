@@ -1,6 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-export default function useTodayPrayerTime() {
+const usePrayerTime = ({ latitude, longitude }) => {
+  const [prayerTime, setPrayerTime] = useState();
+
   const getTodayTimings = useCallback(async (latitude, longitude) => {
     const date = new Date();
     const today = `${date.getDate()}-${
@@ -15,5 +17,13 @@ export default function useTodayPrayerTime() {
     return data.data;
   }, []);
 
-  return { getTodayTimings };
-}
+  useEffect(() => {
+    getTodayTimings(latitude, longitude).then((res) => {
+      setPrayerTime(res);
+    });
+  }, [latitude, longitude, getTodayTimings]);
+
+  return [prayerTime];
+};
+
+export default usePrayerTime;
