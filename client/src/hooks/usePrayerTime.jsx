@@ -9,7 +9,7 @@ const usePrayerTime = ({ latitude, longitude }) => {
       date.getMonth() + 1
     }-${date.getFullYear()}`;
 
-    const url = `https://api.aladhan.com/v1/timings/${today}?latitude=${latitude}&longitude=${longitude}&method=2&iso8601=true`;
+    const url = `https://api.aladhan.com/v1/timings/${today}?latitude=${latitude}&longitude=${longitude}&method=1&iso8601=true`;
 
     const response = await fetch(url);
     const data = await response.json();

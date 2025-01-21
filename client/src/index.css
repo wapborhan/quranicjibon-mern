@@ -78,7 +78,7 @@ input[type="range"] {
   display: none !important;
 }
 .menu-list {
-  @apply p-3 hover:bg-gray-100 hover:text-black rounded-xl;
+  @apply p-3 hover:bg-gray-100 hover:text-black rounded-xl flex items-center gap-5;
 }
 .sidenav .active {
   @apply bg-[#0a993c] text-white  hover:text-black rounded-xl;

@@ -2608,7 +2608,7 @@ body.sticky .sticky-menu {
 }
 
 .lg-mn {
-  padding: 1.125rem 5rem 1.125rem 0.9375rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   position: relative;
   width: 100%;
   display: flex;

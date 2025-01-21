@@ -4,23 +4,49 @@ import usePrayerTime from "../../../hooks/usePrayerTime";
 import { WiSunrise, WiSunset } from "react-icons/wi";
 
 const TimeTable = () => {
-  const latitude = 23.908775911770977;
-  const longitude = 89.12264749493718;
+  const latitude = 23.9095816;
+  const longitude = 89.0423603;
 
   const [prayerTime] = usePrayerTime({ latitude, longitude });
   const [calenderMonth] = useCalenderTime({ latitude, longitude });
+
+  const hijriMonths = [
+    "",
+    "মুহাররম", // ১ম মাস
+    "সফর", // ২য় মাস
+    "রবিউল আউয়াল", // ৩য় মাস
+    "রবিউস সানি", // ৪র্থ মাস (বা রবিউস আখির)
+    "জমাদিউল আউয়াল", // ৫ম মাস
+    "জমাদিউস সানি", // ৬ষ্ঠ মাস (বা জমাদিউল আখিরা)
+    "রজব", // ৭ম মাস
+    "শা'বান", // ৮ম মাস
+    "রমজান", // ৯ম মাস
+    "শাওয়াল", // ১০ম মাস
+    "জ্বিলক্বদ", // ১১তম মাস
+    "জ্বিলহজ্জ", // ১২তম মাস
+  ];
+  const day = new Intl.NumberFormat("bn-BD").format(
+    prayerTime?.date.hijri?.day
+  );
+  const month = hijriMonths[prayerTime?.date.hijri?.month?.number];
+  const year = new Intl.NumberFormat("bn-BD", { useGrouping: false }).format(
+    prayerTime?.date.hijri?.year
+  );
+
+  const hijriDate = `${day} ${month}, ${year}`;
 
   return (
     <>
       <div className="today bg-white rounded-lg p-6 shadow-sm mt-5 space-y-4">
         <div className="dateshow text-center text-xl">
-          {new Intl.DateTimeFormat("bn-BD-u-ca-islamic", {
+          {hijriDate}
+          {/* {new Intl.DateTimeFormat("bn-BD-u-ca-islamic", {
             day: "numeric",
             month: "long",
             // weekday: "long",
             year: "numeric",
             timeZone: "Asia/Dhaka",
-          }).format(Date.now())}
+          }).format(Date.now())} */}
           {" - "}
           {new Intl.DateTimeFormat("bn-BD-u-en-US", {
             day: "numeric",
@@ -65,6 +91,7 @@ const TimeTable = () => {
             <thead>
               <tr>
                 <td>তারিখ</td>
+                <td>তারিখ</td>
                 <td>সেহরির </td>
                 <td>ইফতার </td>
               </tr>
@@ -73,10 +100,8 @@ const TimeTable = () => {
               {calenderMonth &&
                 calenderMonth.map((cal, idx) => {
                   const date = cal?.date?.gregorian.date;
-
                   const isActive =
                     cal?.date?.readable === prayerTime?.date?.readable;
-
                   return (
                     <tr
                       key={idx}

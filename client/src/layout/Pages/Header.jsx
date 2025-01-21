@@ -1,38 +1,39 @@
 import { FaBookQuran } from "react-icons/fa6";
-// import useDarkSide from "../components/shared/DarkMode";
-import { CiDark, CiLight } from "react-icons/ci";
+import { FiAlignJustify, FiAlignLeft } from "react-icons/fi";
+import { LiaSignInAltSolid } from "react-icons/lia";
+import { FaRegUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
-  // const [colorTheme, setTheme] = useDarkSide();
+const Header = ({ toggleMobileMenu, mobileMenuActive }) => {
   const [dark, setDark] = useState(true);
 
   const toggleDarkMode = () => {
-    // setDark(!dark);
-    // if (dark) {
-    //   // const root = window.document.documentElement;
-    //   // root.classList.remove("dark");
-    //   // setDark(false);
-    //   setTheme("dark");
-    // } else {
-    //   // const root = window.document.documentElement;
-    //   // root.classList.add("dark");
-    //   // setDark(true);
-    //   setTheme("light");
-    // }
+    setDark(!dark);
   };
 
   return (
     <>
-      <Link to="/" className="flex items-center cursor-pointer">
-        <div className="w-11 lg-min:w-fit">
-          <div className="icon text-[2.2rem] leading-7 style-Kalpurush-webKit text-[#1fa471] xss:hidden xs:text-xl">
-            <FaBookQuran />
-          </div>
+      <div className="w-11 lg-min:w-fit lg:block md:block hidden">
+        <div className="icon text-[2.2rem] leading-7 style-Kalpurush-webKit text-[#1fa471]  xs:text-xl">
+          <FaBookQuran />
         </div>
+      </div>
+      <div
+        className="w-11 lg-min:w-fit lg:hidden md:hidden flex items-center justify-center "
+        onClick={toggleMobileMenu}
+      >
+        <div className="icon leading-7 style-Kalpurush-webKit text-[#1fa471]">
+          {mobileMenuActive ? (
+            <FiAlignLeft size={35} />
+          ) : (
+            <FiAlignJustify size={35} />
+          )}
+        </div>
+      </div>
+      <Link to="/" className="flex items-center cursor-pointer">
         <div className="ml-4 xss:ml-3 md-max:block">
-          <h1 className="text-[1.7rem] leading-7 style-Kalpurush-webKit text-[#1fa471] xss:hidden xs:text-xl">
+          <h1 className="text-[2rem] leading-7 font-HindSiliguri text-[#1fa471] xss:hidden xs:text-xl">
             Quranic Jibon
           </h1>
         </div>
@@ -43,17 +44,22 @@ const Header = () => {
           onClick={toggleDarkMode}
         >
           {dark ? (
-            <CiDark
-              size={35}
-              // onClick={darkHandler}
-              className="bg-gray-200 p-1 rounded cursor-pointer dark:bg-slate-700 dark:text-gray-300"
-            />
+            <>
+              <LiaSignInAltSolid
+                size={35}
+                onClick={toggleDarkMode}
+                className="p-1 rounded cursor-pointer text-[#1fa471]"
+              />
+            </>
           ) : (
-            <CiLight
-              size={35}
-              // onClick={darkHandler}
-              className="bg-gray-200 p-1 rounded cursor-pointer dark:bg-slate-700 dark:text-gray-300"
-            />
+            <>
+              {" "}
+              <FaRegUserCircle
+                size={35}
+                onClick={toggleDarkMode}
+                className="p-1 rounded cursor-pointer text-[#1fa471]"
+              />
+            </>
           )}
         </div>
       </div>

@@ -4,7 +4,7 @@ import Icon from "../../../components/shared/Icon";
 
 const KalemaDetails = ({ selectKalema }) => {
   return (
-    <div className="w-full h-full pb-16 md:pb-0 flex flex-col md:bg-white md:rounded-2xl overflow-hidden dark:bg-darks ">
+    <div className="w-full h-full  md:pb-0 flex flex-col md:bg-white md:rounded-2xl overflow-hidden dark:bg-darks ">
       <div className="flex h-[52px] px-4 py-5 md:flex items-center space-x-2 bg-white border-b-2 rounded-t-2xl dark:bg-darks ">
         {/* <FaBookOpen size={20} /> */}
         <span>&gt;</span>
