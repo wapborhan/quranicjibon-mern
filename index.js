@@ -21,7 +21,15 @@ app.use(
         "https://www.pagespeed-mod.com",
         "https://www.google-analytics.com",
         "https://www.googletagmanager.com",
+        "https://api.aladhan.com",
       ],
+      connectSrc: [
+        "'self'",
+        process.env.CLIENT,
+        "https://identitytoolkit.googleapis.com",
+        "https://api.aladhan.com",
+      ],
+      imgSrc: ["*"],
     },
   })
 );

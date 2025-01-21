@@ -2190,8 +2190,8 @@ header {
 }
 
 .topbars-info-list > li:not(:first-child) {
-  padding-left: 1.5625rem;
-  margin-left: 1.5625rem;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .topbars-info-list > li:not(:first-child):before {

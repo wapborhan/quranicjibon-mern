@@ -9,7 +9,7 @@ import { timingFormatter } from "../../../components/shared/timingFormatter";
 const Contents = ({ prayerTime }) => {
   // const { Fajr } = prayerTime;
 
-  // console.log(prayerTime?.Fajr);
+  // console.log(prayerTime?.timings?.Fajr);
 
   return (
     <ul className="time-list3 flex flex-wrap mb-0 list-unstyled">
@@ -21,7 +21,7 @@ const Contents = ({ prayerTime }) => {
       >
         <span>সূর্যোদয়:</span>
 
-        {prayerTime && timingFormatter(prayerTime?.Sunrise)}
+        {prayerTime && timingFormatter(prayerTime?.timings?.Sunrise)}
         {/* <i>ইকামাহ: ০০:০০ AM</i> */}
       </li>
       <li
@@ -31,13 +31,13 @@ const Contents = ({ prayerTime }) => {
         }}
       >
         <span>ফজর:</span>
-        {prayerTime && timingFormatter(prayerTime?.Fajr)}
+        {prayerTime && timingFormatter(prayerTime?.timings?.Fajr)}
         {/* AM */}
         {/* <i>
           ইকামাহ:{" "}
           {prayerTime && (
             <span>
-              {DateTime.fromISO(prayerTime?.Fajr)
+              {DateTime.fromISO(prayerTime?.timings?.Fajr)
                 .minus({ minutes: 15 })
                 .toLocaleString(DateTime.TIME_SIMPLE)}
             </span>
@@ -51,7 +51,7 @@ const Contents = ({ prayerTime }) => {
         }}
       >
         <span>যোহর:</span>
-        {prayerTime && timingFormatter(prayerTime?.Dhuhr)}
+        {prayerTime && timingFormatter(prayerTime?.timings?.Dhuhr)}
         {/* <i>ইকামাহ: ০০:০০ AM</i> */}
       </li>
       <li
@@ -61,7 +61,7 @@ const Contents = ({ prayerTime }) => {
         }}
       >
         <span>আসর:</span>
-        {prayerTime && timingFormatter(prayerTime?.Asr)}
+        {prayerTime && timingFormatter(prayerTime?.timings?.Asr)}
         {/* <i>ইকামাহ: ০০:০০ AM</i> */}
       </li>
       <li
@@ -71,7 +71,7 @@ const Contents = ({ prayerTime }) => {
         }}
       >
         <span>মাগরিব:</span>
-        {prayerTime && timingFormatter(prayerTime?.Maghrib)}
+        {prayerTime && timingFormatter(prayerTime?.timings?.Maghrib)}
         {/* <i>ইকামাহ: ০০:০০ AM</i> */}
       </li>
       <li
@@ -81,7 +81,7 @@ const Contents = ({ prayerTime }) => {
         }}
       >
         <span>এশা:</span>
-        {prayerTime && timingFormatter(prayerTime?.Isha)}
+        {prayerTime && timingFormatter(prayerTime?.timings?.Isha)}
         {/* <i>ইকামাহ: ০০:০০ AM</i> */}
       </li>
       {/* {item} */}

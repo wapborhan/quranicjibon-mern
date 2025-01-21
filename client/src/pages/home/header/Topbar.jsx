@@ -8,25 +8,24 @@ const Topbar = () => {
   });
 
   return (
-    <div className="topbars bg-color1  flex flex-wrap lg:justify-center justify-between w-full lg:!pl-[26.5625rem] lg:!px-[1.25rem] !pl-3 !p-0 bg-[#212121]">
+    <div className="topbars bg-color1  flex flex-wrap lg:justify-center justify-between w-full lg:!pl-[26.5625rem] lg:!px-[1.25rem] !pl-2 !p-0 bg-[#212121]">
       <ul className="topbars-info-list mb-0 list-unstyled flex">
         <li className="flex">
           <i className="thm-clr flaticon-sun"></i>
           <span className="lg:block md:block hidden"> সূর্যোদয়:</span>
           <span className="thm-clr">
-            {prayerTime && timingFormatter(prayerTime?.Sunrise)}
+            {prayerTime && timingFormatter(prayerTime?.timings?.Sunrise)}
           </span>
         </li>
         <li className="flex">
           <i className="thm-clr flaticon-moon"></i>
           <span className="lg:block md:block hidden">সূর্যাস্ত: </span>
           <span className="thm-clr">
-            {" "}
-            {prayerTime && timingFormatter(prayerTime?.Sunset)}
+            {prayerTime && timingFormatter(prayerTime?.timings?.Sunset)}
           </span>
         </li>
       </ul>
-      <div className="social-links inline-flex !p-3 text-white">
+      <div className="social-links inline-flex !px-2  text-white">
         <div className="dateshow">
           {new Intl.DateTimeFormat("bn-BD-u-ca-islamic", {
             day: "numeric",
