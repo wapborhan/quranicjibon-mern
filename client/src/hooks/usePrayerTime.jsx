@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 const usePrayerTime = ({ latitude, longitude }) => {
   const [prayerTime, setPrayerTime] = useState();
 
-  const getTodayTimings = useCallback(async (latitude, longitude) => {
+  const getTodayTimings = useCallback(async () => {
     const date = new Date();
     const today = `${date.getDate()}-${
       date.getMonth() + 1
@@ -15,12 +15,20 @@ const usePrayerTime = ({ latitude, longitude }) => {
     const data = await response.json();
 
     return data.data;
-  }, []);
+  }, [latitude, longitude]);
 
   useEffect(() => {
-    getTodayTimings(latitude, longitude).then((res) => {
-      setPrayerTime(res);
+    let isMounted = true;
+
+    getTodayTimings().then((res) => {
+      if (isMounted) {
+        setPrayerTime(res);
+      }
     });
+
+    return () => {
+      isMounted = false;
+    };
   }, [latitude, longitude, getTodayTimings]);
 
   return [prayerTime];

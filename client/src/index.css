@@ -81,7 +81,7 @@ input[type="range"] {
   @apply p-3 hover:bg-gray-100 hover:text-black rounded-xl;
 }
 .sidenav .active {
-  @apply bg-[#2b9e76] text-white  hover:text-black rounded-xl;
+  @apply bg-[#0a993c] text-white  hover:text-black rounded-xl;
 }
 
 .paginate {

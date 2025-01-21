@@ -17,8 +17,6 @@ const Kalema = () => {
     });
   }, []);
 
-  console.log(kalemas);
-
   const handleDataSubmit = (data) => {
     setSelectKalema(data);
   };

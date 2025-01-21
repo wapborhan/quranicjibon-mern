@@ -2,7 +2,6 @@ import React from "react";
 import { BiSearch } from "react-icons/bi";
 
 const SideContentHeader = ({ content }) => {
-  // console.log(content);
   return (
     <div className="md:min-h-[120px]">
       <div className="flex justify-between gap-1 border-b text-xl">

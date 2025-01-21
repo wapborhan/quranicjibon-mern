@@ -9,8 +9,6 @@ import { timingFormatter } from "../../../components/shared/timingFormatter";
 const Contents = ({ prayerTime }) => {
   // const { Fajr } = prayerTime;
 
-  // console.log(prayerTime?.timings?.Fajr);
-
   return (
     <ul className="time-list3 flex flex-wrap mb-0 list-unstyled">
       <li

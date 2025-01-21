@@ -23,7 +23,6 @@ exports.getSuras = async (req, res, next) => {
 
 exports.getSingleSura = async (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
 
   try {
     const data = await Suras.findOne({ index: id });
@@ -45,7 +44,6 @@ exports.getSingleSura = async (req, res, next) => {
 
 exports.getSingleSuraAyahs = async (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
 
   try {
     const suras_ar = await AyahsAr.find({ sura_id: id });
