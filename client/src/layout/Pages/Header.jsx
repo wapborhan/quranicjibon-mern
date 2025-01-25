@@ -2,6 +2,7 @@ import { FaBookQuran } from "react-icons/fa6";
 import { FiAlignJustify, FiAlignLeft } from "react-icons/fi";
 import { LiaSignInAltSolid } from "react-icons/lia";
 import { FaRegUserCircle } from "react-icons/fa";
+import { GoGear } from "react-icons/go";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -31,13 +32,11 @@ const Header = ({ toggleMobileMenu, mobileMenuActive }) => {
           )}
         </div>
       </div>
-      <Link to="/" className="flex items-center cursor-pointer">
-        <div className="ml-4 xss:ml-3 md-max:block">
-          <h1 className="text-[2rem] leading-7 font-HindSiliguri text-[#1fa471] xss:hidden xs:text-xl">
-            Quranic Jibon
-          </h1>
-        </div>
-      </Link>
+      <div className="ml-4 xss:ml-3 md-max:block">
+        <h1 className="md:text-[2rem] text-[1.5rem] lg:leading-7 font-HindSiliguri text-[#1fa471] xss:hidden xs:text-xl">
+          Quranic Jibon
+        </h1>
+      </div>
       <div className="flex items-center justify-end md-max:gap-4 lg-min:gap-20 2xl-min:gap-5">
         <div
           className="rounded-lg  flex items-center justify-center cursor-pointer"
@@ -47,21 +46,22 @@ const Header = ({ toggleMobileMenu, mobileMenuActive }) => {
             <>
               <LiaSignInAltSolid
                 size={35}
-                onClick={toggleDarkMode}
                 className="p-1 rounded cursor-pointer text-[#1fa471]"
               />
             </>
           ) : (
             <>
-              {" "}
               <FaRegUserCircle
                 size={35}
-                onClick={toggleDarkMode}
                 className="p-1 rounded cursor-pointer text-[#1fa471]"
               />
             </>
           )}
         </div>
+        <GoGear
+          size={35}
+          className="p-1 rounded cursor-pointer text-[#1fa471]"
+        />
       </div>
     </>
   );

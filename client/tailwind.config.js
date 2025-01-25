@@ -5,6 +5,7 @@ export default {
     fontFamily: {
       kfgq: ["kfgq"],
       HindSiliguri: ["Anek Bangla"],
+      SolaimanLipi: [" Noto Serif, SolaimanLipi, sans-serif;"],
     },
     extend: {},
   },

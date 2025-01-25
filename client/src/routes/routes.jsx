@@ -66,6 +66,10 @@ const router = createBrowserRouter([
         element: <CoomingSoon />,
       },
       {
+        path: "/maslaha",
+        element: <CoomingSoon />,
+      },
+      {
         path: "/tasbih",
         element: <CoomingSoon />,
       },

@@ -78,7 +78,7 @@ input[type="range"] {
   display: none !important;
 }
 .menu-list {
-  @apply p-3 hover:bg-gray-100 hover:text-black rounded-xl flex items-center gap-5;
+  @apply lg:p-3 p-2 hover:bg-gray-100 hover:text-black gap-3 flex items-center border-b border-slate-200 !px-6 !py-2 !rounded-none;
 }
 .sidenav .active {
   @apply bg-[#0a993c] text-white  hover:text-black rounded-xl;
@@ -542,7 +542,7 @@ td {
 }
 
 .quran.details .menu-item {
-  @apply p-1 bg-gray-100 border-[1px] flex flex-col gap-2 text-black hover:bg-[#2b9e76] hover:text-white rounded-lg w-full text-center cursor-pointer;
+  @apply p-1 bg-gray-100 border-[1px] flex justify-center items-center flex-col gap-2 text-black hover:bg-[#2b9e76] hover:text-white rounded-lg w-full text-center cursor-pointer;
 }
 .quran.details {
   @apply flex flex-col gap-2 transition-all;

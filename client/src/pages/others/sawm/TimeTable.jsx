@@ -1,3 +1,4 @@
+import Loader from "../../../components/shared/Loader";
 import { timingFormatter } from "../../../components/shared/timingFormatter";
 import useCalenderTime from "../../../hooks/useCalenderTime";
 import usePrayerTime from "../../../hooks/usePrayerTime";
@@ -38,6 +39,9 @@ const TimeTable = () => {
   return (
     <>
       <div className="today bg-white rounded-lg p-6 shadow-sm mt-5 space-y-4">
+        <h1 className="font-HindSiliguri title text-center text-3xl mb-6">
+          সেহেরি ইফতারের সময়সূচী
+        </h1>
         <div className="dateshow text-center text-xl">
           {hijriDate}
           {/* {new Intl.DateTimeFormat("bn-BD-u-ca-islamic", {
@@ -90,16 +94,21 @@ const TimeTable = () => {
           <table>
             <thead>
               <tr>
-                <td>তারিখ</td>
-                <td>তারিখ</td>
+                <td>ইংরেজি তারিখ</td>
+                <td>আরবী তারিখ</td>
                 <td>সেহরির </td>
                 <td>ইফতার </td>
               </tr>
             </thead>
             <tbody>
-              {calenderMonth &&
+              {calenderMonth ? (
                 calenderMonth.map((cal, idx) => {
                   const date = cal?.date?.gregorian.date;
+                  const day = cal?.date?.gregorian.weekday;
+
+                  console.log(day);
+
+                  const dateHijri = cal?.date?.hijri.date;
                   const isActive =
                     cal?.date?.readable === prayerTime?.date?.readable;
                   return (
@@ -110,12 +119,18 @@ const TimeTable = () => {
                         "bg-[#0a993c] text-white border-[1px] border-black"
                       }`}
                     >
+                      <td>{dateHijri}</td>
                       <td>{date}</td>
                       <td>{timingFormatter(cal?.timings?.Imsak)}</td>
                       <td>{timingFormatter(cal?.timings?.Maghrib)}</td>
                     </tr>
                   );
-                })}
+                })
+              ) : (
+                <div className="flex justify-center items-center mt-10 w-full">
+                  <Loader />
+                </div>
+              )}
             </tbody>
           </table>
         </div>

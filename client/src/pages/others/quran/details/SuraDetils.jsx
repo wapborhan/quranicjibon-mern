@@ -2,9 +2,11 @@ import { useState } from "react";
 import bengaliNumerals from "../../../../components/shared/bengaliNumerals";
 import AyahsTrans from "./AyahsTrans";
 import AyahsRead from "./AyahsRead";
+import { AiOutlineMenu } from "react-icons/ai";
 
 const SuraDetils = ({ ayahs, sura, loading }) => {
   const [activeTab, setActiveTab] = useState(1);
+
   return (
     <>
       {loading ? (
@@ -39,13 +41,15 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
           {sura && (
             <>
               <div className="text-sm text-center block space-y-1">
-                <div className="text-xl font-bold font-kfgq">{sura?.name} </div>
-                <div className="font-HindSiliguri">{sura?.name_bn}</div>
+                <div className="text-3xl font-bold font-kfgq">
+                  {sura?.name}{" "}
+                </div>
               </div>
               <div className="text-sm text-center block space-y-1">
-                <div>{sura?.name_en}</div>
+                <div className="font-HindSiliguri">{sura?.name_bn}</div>
                 <div>
-                  {bengaliNumerals(sura.index)} {" আয়াত"}
+                  {"আয়াত: "} {bengaliNumerals(sura.ayas)} -{" "}
+                  {sura?.type === "Meccan" ? "মক্কা" : "মদীনা"}
                 </div>
               </div>
               <div className="flex gap-3">
@@ -75,15 +79,22 @@ const SuraDetils = ({ ayahs, sura, loading }) => {
           )}
         </div>
       )}
-      <div className="h-[cal(100%-52px)] md:px-4 overflow-y-auto space-y-2  pt-6 md:pt-0 pb-2 md:mt-0 dark:px-2 mb-2">
+      <div className="h-[cal(100%-52px)] md:px-4 overflow-y-auto space-y-4 lg:pt-6 md:pt-0 pb-2 md:mt-0 dark:px-2 mb-2">
         <div
           // onClick={() => setMenu(!menu)}
-          className="md:hidden p-4 flex items-center space-x-2 bg-white rounded-xl cursor-pointer dark:bg-darks"
+          className="md:hidden p-4 flex items-center rounded-xl bg-white text-black cursor-pointer dark:bg-darks"
         >
-          {/* <AiOutlineMenu size={20} /> */} Name{" "}
-          <span className="text-xl">{sura?.name}</span>
+          <div className="flex justify-between w-full">
+            <AiOutlineMenu size={20} color="#1fa471" />
+            <span className="text-xl">{sura?.name}</span>
+            <span className="font-SolaimanLipi">
+              {"আয়াত: "} {sura && bengaliNumerals(sura?.ayas)}
+            </span>
+          </div>
         </div>
-        {activeTab === 1 && <AyahsTrans ayahs={ayahs} loading={loading} />}
+        {activeTab === 1 && (
+          <AyahsTrans ayahs={ayahs} loading={loading} sura={sura} />
+        )}
         {activeTab === 2 && <AyahsRead ayahs={ayahs} loading={loading} />}
       </div>{" "}
     </>

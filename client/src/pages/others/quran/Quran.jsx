@@ -17,7 +17,7 @@ const Quran = () => {
   }, []);
 
   return (
-    <>
+    <div className="quran lg:px-0 md:px-0 px-2">
       <div className="mt-4 md:mt-0 p-4 flex flex-col md:flex-row md:justify-between items-center space-y-3 md:space-y-0 dark:bg-darks bg-white rounded-xl  dark:text-dark-text">
         <h2 className="text-2xl font-medium font-HindSiliguri">আল কোরআন</h2>
         <div className="w-full md:w-9/12 flex justify-between items-center space-x-2 px-4 border-2 rounded-lg dark:border-gray-500">
@@ -53,7 +53,7 @@ const Quran = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

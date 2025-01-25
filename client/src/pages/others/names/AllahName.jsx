@@ -14,7 +14,7 @@ const AllahName = () => {
   }, []);
 
   return (
-    <div className="w-full lg:w-9/12 md:w-full px-2 pb-10 h-full mx-auto overflow-y-auto">
+    <div className="w-full lg:w-9/12 md:w-full pb-10 h-full mx-auto overflow-y-auto lg:px-0 md:px-0 px-2">
       <div className="border-2 p-4 lg:text-xl text-md rounded-xl text-center font-HindSiliguri">
         আবূ হুরাইরাহ (রাঃ) হতে বর্ণিত। তিনি বলেন, আল্লাহ্ তা‘আলার নিরানব্বই নাম
         আছে, এক কম একশত নাম। যে ব্যক্তি এ (নাম) গুলোর হিফাযাত করবে সে জান্নাতে

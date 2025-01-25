@@ -65,7 +65,7 @@ const MobileMenu = ({ mobileMenuActive, toggleMobileMenu }) => {
         {navMenu.map((item, index) => (
           <NavLink
             to={item.link}
-            className="menu-list relative group border-b border-slate-200 !px-6 !py-2 !rounded-none"
+            className="menu-list relative group "
             key={index}
             onClick={toggleMobileMenu}
           >

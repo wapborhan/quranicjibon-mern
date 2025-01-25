@@ -1,32 +1,12 @@
 import { Link } from "react-router-dom";
 
 const headLink = [
-  {
-    id: 0,
-    title: "আল কুরআন",
-    path: "/quran",
-  },
-  {
-    id: 1,
-    title: "কালেমা",
-    path: "/kalema",
-  },
-  // {
-  //   id: 2,
-  //   title: "সালাত",
-  //   path: "/pages/salat",
-  // },
-  {
-    id: 3,
-    title: "আল্লাহর নাম",
-    path: "/allah-names",
-  },
-
-  // {
-  //   id: 3,
-  //   title: "কুরবানি",
-  //   path: "/pages/qurbani",
-  // },
+  { id: 0, title: "আল কুরআন", path: "/quran" },
+  { id: 1, title: "কালেমা", path: "/kalema" },
+  { id: 2, title: "সালাত", path: "/salat" },
+  { id: 3, title: "সাওম", path: "/sawm" },
+  { id: 4, title: "জাকাত", path: "/zakat" },
+  { id: 5, title: "হজ্জ", path: "/hajj" },
 ];
 
 const NavMenu = () => {

@@ -1,26 +1,39 @@
 const AyahsRead = ({ ayahs, loading }) => {
   return (
-    <div className="space-y-2 flex flex-row-reverse justify-start flex-wrap">
+    <div
+      className="space-y-4 text-justify lg:px-5 px-2 bg-white rounded-xl py-5"
+      style={{ direction: "rtl" }}
+    >
       {ayahs &&
         ayahs.map((ayah, idx) => {
+          console.log();
+
           return (
-            <span
-              key={idx}
-              className={`p-2 group  justify-center bg-white border-gray-100 dark:border-gray-0 border-[0.3px] dark:border-[0px]  transition-all duration-500 dark:bg-darkz shadow-sm ${
-                loading && "animate-pulse"
-              }`}
-            >
+            <>
               {loading ? (
-                <div className="h-4 bg-gray-700 w-10/12 ml-auto full flex"></div>
+                <div
+                  key={idx}
+                  className="h-4 bg-gray-200 w-10/12 ml-auto full"
+                ></div>
               ) : (
-                <span className="text-black text-right text-2xl dark:!text-black font-kfgq">
-                  {ayah?.uthmani}
-                  <b className="font-kfgq mr-3">
+                <span
+                  key={idx}
+                  className="p-2 group leading-10 mt-5 transition-all duration-500 text-black text-right text-2xl  font-kfgq"
+                >
+                  {/* {ayah?.uthmani} */}
+                  {ayah?.uthmani.split(" ").map((word, idx) => {
+                    return (
+                      <span key={idx} className="inline-block ml-1">
+                        {word}{" "}
+                      </span>
+                    );
+                  })}
+                  <span className="font-kfgq mr-3">
                     {parseInt(ayah.ayah_id).toLocaleString("ar-EG")}
-                  </b>
+                  </span>
                 </span>
               )}
-            </span>
+            </>
           );
         })}
     </div>
