@@ -12,8 +12,6 @@ const AyahsTrans = ({ ayahs, loading, sura }) => {
     <div className="space-y-2 flex flex-col w-full bg-white">
       {ayahs &&
         ayahs.map((ayah, idx) => {
-          console.log(ayah);
-
           return (
             <div
               key={idx}
@@ -23,9 +21,15 @@ const AyahsTrans = ({ ayahs, loading, sura }) => {
             >
               <div className="menu flex gap-2 flex-col">
                 <div className="text-black">
-                  {bengaliNumerals(parseInt(sura?.index))}
-                  {":"}
-                  {bengaliNumerals(parseInt(ayah?.ayah_id))}
+                  {loading ? (
+                    <div className="h-4 bg-gray-200 w-10/12 ml-auto full"></div>
+                  ) : (
+                    <>
+                      {bengaliNumerals(parseInt(sura?.index))}
+                      {":"}
+                      {bengaliNumerals(parseInt(ayah?.ayah_id))}
+                    </>
+                  )}
                 </div>
                 <ul className="quran details absolutes top-2 left-2">
                   {/* <li className="menu-item">

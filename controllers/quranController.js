@@ -4,7 +4,10 @@ const Suras = require("../models/Suras");
 
 exports.getSuras = async (req, res, next) => {
   try {
-    const data = await Suras.find({});
+    const data = await Suras.find({})
+      .collation({ locale: "en", numericOrdering: true })
+      .sort({ index: 1 });
+
     res.status(200).json({
       success: true,
       status: 200,

@@ -7,6 +7,8 @@ const SalatTime = () => {
     longitude: 89.12264749493718,
   });
 
+  // https://github.com/NasifAhmed/muslim-dashboard/blob/main/src/hooks/useTime.tsx
+
   return (
     <section>
       <div className="w-full bg-white dark:bg-darks dark:text-dark-text mt-10 p-4 rounded-xl">
