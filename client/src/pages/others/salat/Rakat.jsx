@@ -6,7 +6,6 @@ const Rakat = () => {
     <section>
       <div className="rakat bg-white dark:bg-darks dark:text-dark-text mt-10 p-4 rounded-xl w-full">
         <h1 className="font-HindSiliguri text-2xl text-center font-medium py-5">
-          {" "}
           ৫ ওয়াক্ত নামাজের রাকাত সমূহ
         </h1>
         <div className="flex lg:flex-row  flex-col items-start gap-5 w-full">
@@ -14,9 +13,9 @@ const Rakat = () => {
             <thead>
               <tr>
                 <td>ওয়াক্ত</td>
-                <td>ফরয এর আগে</td>
+                <td>আগে</td>
                 <td>ফরয</td>
-                <td colSpan={4}>ফরয এর পরে</td>
+                <td colSpan={4}>পরে</td>
                 <td>মোট</td>
               </tr>
             </thead>
@@ -127,6 +126,7 @@ const Rakat = () => {
               </tr>
             </tbody>
           </table>
+
           <div className="instraction flex flex-col justify-start items-start">
             <div className="ins-list">
               <span className="text bg-[#ed5746]">ফরয</span>

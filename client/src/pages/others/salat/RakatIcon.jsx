@@ -2,8 +2,8 @@ import bengaliNumerals from "../../../components/shared/bengaliNumerals";
 
 const RakatIcon = ({ rakat, color, title }) => {
   return (
-    <div className="h-12 w-12 group sm-max:w-10 xl:w-10  flex items-center justify-center relative">
-      <h3 className="text-dark dark:bg-barkz text-white  dark:text-hadith-deepoffwhite  false style-Kalpurush absolute md-max:text-base text-xl font-medium font-HindSiliguris  group-hover:opacity-100  xl:text-lg">
+    <div className="lg:h-12 lg:w-12 w-6 h-6 group sm-max:w-10 xl:w-10  flex items-center justify-center relative">
+      <h3 className="text-dark dark:bg-barkz text-white  dark:text-hadith-deepoffwhite  false style-Kalpurush absolute md-max:text-base  font-medium font-HindSiliguris  group-hover:opacity-100  lg:text-lg text-sm">
         {rakat && bengaliNumerals(rakat)}
         {title && title}
       </h3>

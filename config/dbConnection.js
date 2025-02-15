@@ -30,6 +30,21 @@ const dbConnection = async () => {
 
   await mongoose.connect(mongoURI, { dbName: process.env.DB_NAME });
   console.log("Connected to Database.");
+
+  const renameCollection = async () => {
+    try {
+      const db = mongoose.connection.db;
+      await db.collection("quran_bn").rename("bn_ayahs");
+
+      console.log("✅ Collection renamed successfully!");
+      process.exit();
+    } catch (error) {
+      console.error("❌ Error renaming collection:", error);
+      process.exit(1);
+    }
+  };
+
+  // renameCollection();
 };
 
 module.exports = dbConnection;

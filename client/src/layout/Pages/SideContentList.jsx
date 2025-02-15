@@ -23,7 +23,8 @@ const SideContentList = ({ suras, handleDataSubmit, handleListActive }) => {
   }, [suraId, suras, isMobile]); // Include isMobile in dependency
 
   const handleSuraClick = (sura, index) => {
-    handleListActive();
+    if (isMobile) handleListActive();
+    // handleListActive();
     navigate(`/quran/sura?number=${sura.index}`);
     handleDataSubmit(sura.index);
 

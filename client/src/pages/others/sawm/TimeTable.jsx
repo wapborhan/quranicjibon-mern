@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import Loader from "../../../components/shared/Loader";
 import { timingFormatter } from "../../../components/shared/timingFormatter";
 import useCalenderTime from "../../../hooks/useCalenderTime";
@@ -38,7 +39,7 @@ const TimeTable = () => {
 
   return (
     <>
-      <div className="today bg-white rounded-lg p-6 shadow-sm mt-5 space-y-4">
+      <div className="today bg-white rounded-lg lg:p-6 p-2 shadow-sm mt-5 space-y-4">
         <h1 className="font-HindSiliguri title text-center text-3xl mb-6">
           সেহেরি ইফতারের সময়সূচী
         </h1>
@@ -60,7 +61,7 @@ const TimeTable = () => {
             timeZone: "Asia/Dhaka",
           }).format(Date.now())}{" "}
         </div>
-        <div className="timeTable flex justify-around items-center text-center">
+        <div className="timeTable flex flex-wrap justify-around items-center text-center">
           <div className="sehri space-y-2">
             <WiSunrise size={60} className="mx-auto" />
             <h1 className="title font-HindSiliguri text-lg font-bold">
@@ -94,21 +95,25 @@ const TimeTable = () => {
           <table>
             <thead>
               <tr>
-                <td>ইংরেজি তারিখ</td>
-                <td>আরবী তারিখ</td>
-                <td>সেহরির </td>
-                <td>ইফতার </td>
+                <td>তারিখ</td>
+                <td className="lg:flex md:flex hidden">দিন</td>
+                <td>সেহরির</td>
+                <td>ইফতার</td>
+                <td className="w-fulls"> একশন</td>
               </tr>
             </thead>
             <tbody>
               {calenderMonth ? (
                 calenderMonth.map((cal, idx) => {
                   const date = cal?.date?.gregorian.date;
-                  const day = cal?.date?.gregorian.weekday;
+                  const dt = DateTime.fromFormat(date, "dd-MM-yyyy").setLocale(
+                    "bn"
+                  );
+                  const day = dt.toFormat("cccc", { locale: "bn" });
+                  const formattedDate = dt.toFormat("dd LLLL", {
+                    locale: "bn",
+                  });
 
-                  console.log(day);
-
-                  const dateHijri = cal?.date?.hijri.date;
                   const isActive =
                     cal?.date?.readable === prayerTime?.date?.readable;
                   return (
@@ -119,10 +124,20 @@ const TimeTable = () => {
                         "bg-[#0a993c] text-white border-[1px] border-black"
                       }`}
                     >
-                      <td>{dateHijri}</td>
-                      <td>{date}</td>
+                      <td>{formattedDate}</td>
+                      <td className="lg:grid md:grid hidden">{day}</td>
                       <td>{timingFormatter(cal?.timings?.Imsak)}</td>
                       <td>{timingFormatter(cal?.timings?.Maghrib)}</td>
+                      <td className="w-3/12">
+                        <span className="onoff">
+                          <input
+                            type="checkbox"
+                            value="1"
+                            id={`checkbox-${idx}`}
+                          />
+                          <label htmlFor={`checkbox-${idx}`}></label>
+                        </span>
+                      </td>
                     </tr>
                   );
                 })

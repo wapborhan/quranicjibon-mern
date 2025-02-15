@@ -78,7 +78,7 @@ input[type="range"] {
   display: none !important;
 }
 .menu-list {
-  @apply lg:p-3 p-2 hover:bg-gray-100 hover:text-black gap-3 flex items-center border-b border-slate-200 !px-6 !py-2 !rounded-none;
+  @apply lg:p-3 p-2 hover:bg-gray-100 hover:text-black gap-3 flex items-center;
 }
 .sidenav .active {
   @apply bg-[#0a993c] text-white  hover:text-black rounded-xl;
@@ -511,7 +511,8 @@ table {
   width: 100%;
 }
 .rakat table th,
-td {
+.rakat table td,
+.ramjan table td {
   border-collapse: collapse;
   border: 1px solid;
 }
@@ -524,10 +525,7 @@ td {
 
 .rakat table tbody td,
 .ramjan.calender table tbody td {
-  padding: 10px 30px;
-  text-align: center;
-  /* margin: 0 auto; */
-  /* width: 100%; */
+  @apply lg:p-2 p-1 text-center lg:text-lg text-sm;
 }
 
 .ins-list {
@@ -535,7 +533,7 @@ td {
 }
 
 .ins-list .text {
-  @apply py-3 px-5 text-white rounded-lg text-nowrap;
+  @apply py-3 px-5 text-white rounded-lg text-wrap;
 }
 .ins-list .text ~ span {
   @apply col-span-2 text-start;

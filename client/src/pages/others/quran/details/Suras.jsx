@@ -72,7 +72,7 @@ const Suras = () => {
 
       <div
         className={`md:hidden absolute top-0  w-full h-screen  bg-white rounded-2xl dark:bg-darks z-40 ${
-          listActive ? "left-0" : "-left-80"
+          listActive ? "left-0" : "-left-[30rem]"
         }`}
       >
         <SideContentHeader
@@ -100,9 +100,6 @@ const Suras = () => {
           handleListActive={handleListActive}
         />
       </div>
-      {/* <div className="hidden md:w-[450px] h-full md:flex flex-col bg-white rounded-2xl dark:bg-darks dark:text-gray-300">
-        <Settings />
-      </div> */}
     </div>
   );
 };

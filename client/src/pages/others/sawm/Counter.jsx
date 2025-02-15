@@ -65,7 +65,7 @@ class Counter extends Component {
             রমযান আগমনের সম্ভাব্য বাকী
           </h1>
           {!isExpired && targetDate && targetTime ? (
-            <div className="counter">
+            <div className="counter !flex flex-wrap">
               {Object.entries(remaining).map((el, i) => (
                 <div key={i} className="entry">
                   <div key={el[1]} className="entry-value">

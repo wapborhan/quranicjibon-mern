@@ -82,14 +82,12 @@ const SuraDetils = ({ ayahs, sura, loading, handleListActive }) => {
       <div className="h-[cal(100%-52px)] md:px-4 overflow-y-auto space-y-4 lg:pt-6 md:pt-0 pb-2 md:mt-0 dark:px-2 mb-2">
         <div
           // onClick={() => setMenu(!menu)}
-          className="md:hidden p-4 flex items-center rounded-xl bg-white text-black cursor-pointer dark:bg-darks border-[0.5px] border-slate-300"
+          className="md:hidden flex items-center rounded-xl bg-white text-black cursor-pointer dark:bg-darks border-[0.5px] border-slate-300"
         >
-          <div className="flex justify-between w-full">
-            <AiOutlineMenu
-              size={20}
-              color="#1fa471"
-              onClick={handleListActive}
-            />
+          <div className="flex justify-between w-full items-center p-2">
+            <div className="icon p-2" onClick={handleListActive}>
+              <AiOutlineMenu size={20} color="#1fa471" />
+            </div>
             <span className="text-xl">{sura?.name}</span>
             <span className="font-SolaimanLipi">
               {"আয়াত: "} {sura && bengaliNumerals(sura?.ayas)}

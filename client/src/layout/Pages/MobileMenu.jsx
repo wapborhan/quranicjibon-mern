@@ -58,7 +58,7 @@ const MobileMenu = ({ mobileMenuActive, toggleMobileMenu }) => {
   return (
     <div
       className={`${
-        mobileMenuActive ? "left-0" : " -left-80"
+        mobileMenuActive ? "left-0" : " -left-96"
       } md:hidden fixed top-[13%]  w-full ransition duration-300 h-full z-50 bg-s[#00000080] text-black`}
     >
       <div className="w-8/12 bg-white shadow-xl rounded-e-lg pb-3">
