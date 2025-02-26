@@ -545,3 +545,8 @@ table {
 .quran.details {
   @apply flex flex-col gap-2 transition-all;
 }
+.rhap_main-controls-button,
+.rhap_repeat-button,
+.rhap_additional-controls {
+  @apply !text-white;
+}

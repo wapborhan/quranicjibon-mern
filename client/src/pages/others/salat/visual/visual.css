@@ -1,0 +1,23 @@
+/* .swiper-container {
+  @apply relative lg:max-w-[90%] max-w-[90%] m-auto;
+} */
+
+.custom-prev,
+.custom-next {
+  @apply bg-[#0a993c] text-white border-none px-4 py-2 cursor-pointer z-10 text-lg rounded-md;
+  padding: 5px 10px;
+  margin: 10px auto;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  @apply bg-[#0cc74e];
+}

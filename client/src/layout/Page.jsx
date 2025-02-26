@@ -36,7 +36,7 @@ const Page = () => {
         />
       </div>
       <div className="relative w-full bg-body-grey-bg dark:bg-darkz md:rounded-tl-3xl pt-[85px] md:mt-[80px] md:p-4">
-        <div className="w-full lg:w-full md:w-full h-full mx-auto lg:overflow-y-auto md:overflow-y-auto overflow-y-hidden">
+        <div className="w-full lg:w-full md:w-full h-full mx-auto overflow-y-auto">
           <Outlet />
         </div>
       </div>

@@ -254,10 +254,11 @@ body::-webkit-scrollbar-thumb {
 
 /*=== General Styling ===*/
 
-body,
+/* body,
 html {
   overflow-x: hidden;
-}
+  overflow-y: hidden;
+} */
 
 body {
   margin: 0;

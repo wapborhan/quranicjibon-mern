@@ -79,7 +79,7 @@ const SuraDetils = ({ ayahs, sura, loading, handleListActive }) => {
           )}
         </div>
       )}
-      <div className="h-[cal(100%-52px)] md:px-4 overflow-y-auto space-y-4 lg:pt-6 md:pt-0 pb-2 md:mt-0 dark:px-2 mb-2">
+      <div className="h-full md:px-4 overflow-y-auto space-y-4 lg:pt-6 md:pt-0 pb-2 md:mt-0 dark:px-2 mb-2">
         <div
           // onClick={() => setMenu(!menu)}
           className="md:hidden flex items-center rounded-xl bg-white text-black cursor-pointer dark:bg-darks border-[0.5px] border-slate-300"

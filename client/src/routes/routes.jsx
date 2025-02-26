@@ -11,6 +11,8 @@ import CoomingSoon from "../components/CoomingSoon";
 import Suras from "../pages/others/quran/details/Suras";
 import Salat from "../pages/others/salat/Salat";
 import Sawm from "../pages/others/sawm/Sawm";
+import Visual from "../pages/others/salat/visual/Visual";
+import TimeTable from "../pages/others/sawm/TimeTable";
 
 const router = createBrowserRouter([
   {
@@ -54,8 +56,15 @@ const router = createBrowserRouter([
         element: <Salat />,
       },
       {
+        path: "/salat/visual",
+        element: <Visual />,
+      },
+      {
         path: "/sawm",
-        element: <Sawm />,
+        children: [
+          { path: "", element: <Sawm /> },
+          { path: "full-month", element: <TimeTable /> },
+        ],
       },
       {
         path: "/zakat",

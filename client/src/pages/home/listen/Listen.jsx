@@ -2,38 +2,48 @@ import { useState } from "react";
 
 // import PattBG from "../..;
 // import MockUp from "../..";
-// import AudioPlayer from "react-h5-audio-player";
-// import { FaKaaba, FaMosque } from "react-icons/fa";
-// import SuraData from "../../assets/data/quran/SuraData";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+import { FaKaaba, FaMosque } from "react-icons/fa";
 
 const Listen = () => {
   const [state, setState] = useState({
     currentMusicIndex: 0,
-    // playlist: SuraData,
+    playlist: [
+      {
+        type: "মাদীনী",
+        ar_name: "الفاتحة",
+        sura_no: 1,
+        total_ayat: 7,
+        audio:
+          "https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/1.mp3",
+        sura_name: "আল-ফাতিহা",
+      },
+    ],
     suraName: "",
   });
 
-  // const handleClickPrevious = () => {
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     currentMusicIndex:
-  //       prevState.currentMusicIndex === 0
-  //         ? state.playlist.length - 1
-  //         : prevState.currentMusicIndex - 1,
-  //   }));
-  // };
+  const handleClickPrevious = () => {
+    setState((prevState) => ({
+      ...prevState,
+      currentMusicIndex:
+        prevState.currentMusicIndex === 0
+          ? state.playlist.length - 1
+          : prevState.currentMusicIndex - 1,
+    }));
+  };
 
-  // const handleClickNext = () => {
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     currentMusicIndex:
-  //       prevState.currentMusicIndex < state.playlist.length - 1
-  //         ? prevState.currentMusicIndex + 1
-  //         : 0,
-  //   }));
-  // };
+  const handleClickNext = () => {
+    setState((prevState) => ({
+      ...prevState,
+      currentMusicIndex:
+        prevState.currentMusicIndex < state.playlist.length - 1
+          ? prevState.currentMusicIndex + 1
+          : 0,
+    }));
+  };
 
-  // const { currentMusicIndex } = state;
+  const { currentMusicIndex } = state;
 
   return (
     <section>
@@ -70,44 +80,46 @@ const Listen = () => {
                       backgroundImage: `url("/assets/images/pattern-bg.jpg")`,
                     }}
                   >
-                    <div className="plyr text-center v3 w-full">
-                      <h1>
-                        {/* {state.playlist[currentMusicIndex].type === "মাক্কী" ? (
-                          // <FaKaaba />
-                          <h1>g</h1>
+                    <div className="plyr grid grid-cols-3 text-center v3 w-full">
+                      <div className="flex items-center justify-center">
+                        {state?.playlist[currentMusicIndex]?.type ===
+                        "মাক্কী" ? (
+                          <FaKaaba size={40} />
                         ) : (
-                          // <FaMosque />
-                          <h3>ff</h3>
-                        )} */}
-                      </h1>
+                          // <h1>g</h1>
+                          <FaMosque size={40} />
+                          // <h3>ff</h3>
+                        )}
+                      </div>
                       <h3 className="font-ar">
-                        {/* {state.playlist[currentMusicIndex].ar_name} */}
+                        {state?.playlist[currentMusicIndex]?.ar_name}
                         <br />
                         <span>
-                          {/* {state.playlist[currentMusicIndex].sura_name} */}
+                          {state?.playlist[currentMusicIndex]?.sura_name}
                         </span>
                         <br />
                       </h3>
-                      <h4>
-                        {/* নম্বর: {state.playlist[currentMusicIndex].sura_no} */}
-                      </h4>
-                      <h4>
-                        {/* আয়াত: {state.playlist[currentMusicIndex].total_ayat} */}
-                      </h4>
-                      <ul className="playlist mb-0 list-none">
-                        <li>
-                          {/* <AudioPlayer
-                            onEnded={handleClickNext}
-                            autoPlayAfterSrcChange={true}
-                            showSkipControls={true}
-                            showJumpControls={false}
-                            src={state.playlist[currentMusicIndex].audio}
-                            onClickPrevious={handleClickPrevious}
-                            onClickNext={handleClickNext}
-                          /> */}
-                          y
-                        </li>
-                      </ul>
+                      <div>
+                        <h4>
+                          নম্বর: {state?.playlist[currentMusicIndex]?.sura_no}
+                        </h4>
+                        <h4>
+                          আয়াত: {state?.playlist[currentMusicIndex]?.total_ayat}
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="playlist p-6 list-none">
+                      <AudioPlayer
+                        onEnded={handleClickNext}
+                        autoPlayAfterSrcChange={true}
+                        showSkipControls={true}
+                        showJumpControls={false}
+                        src={state?.playlist[currentMusicIndex]?.audio}
+                        onClickPrevious={handleClickPrevious}
+                        onClickNext={handleClickNext}
+                        className="!bg-transparent !shadow-none !border-none !fill-white !text-white !border-white"
+                        style={{ color: "!white" }}
+                      />
                     </div>
                   </div>
                 </div>
