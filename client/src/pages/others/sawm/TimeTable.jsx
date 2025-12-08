@@ -10,8 +10,6 @@ const TimeTable = () => {
 
   const { pathname } = useLocation();
 
-  console.log(location);
-
   const [prayerTime] = usePrayerTime({ latitude, longitude });
 
   const hijriMonths = [
@@ -42,9 +40,19 @@ const TimeTable = () => {
   return (
     <>
       <div className="today bg-white rounded-lg lg:p-6 p-2 shadow-sm mt-5 space-y-4">
-        <h1 className="font-HindSiliguri title text-center text-3xl mb-6">
+        <h1 className="font-HindSiliguri title text-center lg:text-3xl text-xl font-bold mb-6">
           সেহেরি ইফতারের সময়সূচী
         </h1>
+        <div className="location">
+          <input
+            type="text"
+            name="location"
+            id="location"
+            className="border p-2 rounded-lg w-full text-center text-black hover:border focus:border"
+            placeholder="Kushtia, Khulna, Bangladesh"
+            disabled
+          />
+        </div>
         <div className="dateshow text-center text-xl">
           {hijriDate}
           {/* {new Intl.DateTimeFormat("bn-BD-u-ca-islamic", {

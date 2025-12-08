@@ -3,6 +3,7 @@ import DefaultMeta from "../../../provider/DefaultMeta";
 import Counter from "./Counter";
 import TimeTable from "./TimeTable";
 import Card from "../../../components/shared/Card";
+import Maswala from "../maswala/Maswala";
 // import Maswala from "./Maswala";
 
 const Sawm = () => {
@@ -81,13 +82,18 @@ const Sawm = () => {
   return (
     <div className="sawm">
       <DefaultMeta title="রমযান" />{" "}
-      <Counter targetDate={targetDate} targetTime={targetTime} />
+      {/* <Counter targetDate={targetDate} targetTime={targetTime} /> */}
       <TimeTable />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
+      {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
         {salatCard &&
           salatCard.map((data) => <Card data={data} key={data._id} />)}
+      </div> */}
+      <div className="bg-white rounded-lg lg:p-6 p-2 shadow-sm mt-5 space-y-4">
+        <h1 className="font-HindSiliguri text-2xl font-bold w-full pb-2">
+          মাসলাহ
+        </h1>
       </div>
-      {/* <Maswala /> */}
+      <Maswala />
     </div>
   );
 };

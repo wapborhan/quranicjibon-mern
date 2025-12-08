@@ -1,92 +1,107 @@
-import { Component, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
+import usePrayerTime from "../../../hooks/usePrayerTime";
 
-class Counter extends Component {
-  state = {
-    remaining: {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    },
-    isExpired: false,
-  };
-  timer;
-  distance;
+const Counter = ({ targetDate, targetTime }) => {
+  const [remaining, setRemaining] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  const [isExpired, setIsExpired] = useState(false);
+  let timer;
 
-  componentDidMount() {
-    this.setDate();
-    this.counter();
-  }
+  useEffect(() => {
+    setDate();
+    timer = setInterval(() => {
+      setDate();
+    }, 1000);
 
-  setDate = () => {
-    const { targetDate, targetTime } = this.props,
-      // Get todays date and time
-      now = new Date().getTime(),
-      // Set the date we're counting down to
-      countDownDate = new Date(targetDate + " " + targetTime).getTime();
+    return () => clearInterval(timer);
+  }, [targetDate, targetTime]);
 
-    // Find the distance between now and the count down date
-    this.distance = countDownDate - now;
+  const setDate = () => {
+    const now = new Date().getTime();
+    const countDownDate = new Date(`${targetDate} ${targetTime}`).getTime();
+    const distance = countDownDate - now;
 
-    // target date and time is less than current date and time
-    if (this.distance < 0) {
-      clearInterval(this.timer);
-      this.setState({ isExpired: true });
+    if (distance < 0) {
+      clearInterval(timer);
+      setIsExpired(true);
     } else {
-      this.setState({
-        remaining: {
-          days: Math.floor(this.distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor(
-            (this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          ),
-          minutes: Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((this.distance % (1000 * 60)) / 1000),
-        },
-        isExpired: false,
+      setRemaining({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        ),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
       });
+      setIsExpired(false);
     }
   };
 
-  counter = () => {
-    this.timer = setInterval(() => {
-      this.setDate();
-    }, 1000);
-  };
+  const latitude = 23.9095816;
+  const longitude = 89.0423603;
+  const [prayerTime] = usePrayerTime({ latitude, longitude });
 
-  render() {
-    const { remaining, isExpired } = this.state,
-      { targetDate, targetTime } = this.props;
+  const hijriMonths = [
+    "",
+    "মুহাররম", // ১ম মাস
+    "সফর", // ২য় মাস
+    "রবিউল আউয়াল", // ৩য় মাস
+    "রবিউস সানি", // ৪র্থ মাস (বা রবিউস আখির)
+    "জমাদিউল আউয়াল", // ৫ম মাস
+    "জমাদিউস সানি", // ৬ষ্ঠ মাস (বা জমাদিউল আখিরা)
+    "রজব", // ৭ম মাস
+    "শা'বান", // ৮ম মাস
+    "রমজান", // ৯ম মাস
+    "শাওয়াল", // ১০ম মাস
+    "জ্বিলক্বদ", // ১১তম মাস
+    "জ্বিলহজ্জ", // ১২তম মাস
+  ];
+  const day = new Intl.NumberFormat("bn-BD").format(
+    prayerTime?.date.hijri?.day
+  );
+  const month = hijriMonths[prayerTime?.date.hijri?.month?.number];
+  const year = new Intl.NumberFormat("bn-BD", { useGrouping: false }).format(
+    prayerTime?.date.hijri?.year
+  );
 
-    return (
-      <Fragment>
-        <div className=" bg-white rounded-lg p-6 shadow-sm">
-          {" "}
-          <h1 className="font-HindSiliguri title text-center text-3xl mb-6">
-            রমযান আগমনের সম্ভাব্য বাকী
-          </h1>
-          {!isExpired && targetDate && targetTime ? (
+  const hijriDate = `${day} ${month}, ${year}`;
+
+  return (
+    <Fragment>
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        {!isExpired && targetDate && targetTime ? (
+          <>
+            <h1 className="font-HindSiliguri title text-center text-3xl mb-6">
+              রমযান আগমনের সম্ভাব্য বাকী
+            </h1>
             <div className="counter !flex flex-wrap">
-              {Object.entries(remaining).map((el, i) => (
+              {Object.entries(remaining).map(([key, value], i) => (
                 <div key={i} className="entry">
-                  <div key={el[1]} className="entry-value">
-                    <span className="count top curr flipTop">{el[1] + 1}</span>
-                    <span className="count top next">{el[1]}</span>
+                  <div className="entry-value">
+                    <span className="count top curr flipTop">{value + 1}</span>
+                    <span className="count top next">{value}</span>
                     <span className="count bottom next flipBottom">
-                      {el[1]}
+                      {value}
                     </span>
-                    <span className="count bottom curr">{el[1] + 1}</span>
+                    <span className="count bottom curr">{value + 1}</span>
                   </div>
-                  <div className="entry-title">{el[0].toUpperCase()}</div>
+                  <div className="entry-title">{key.toUpperCase()}</div>
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="alert-danger">Expired</p>
-          )}
-        </div>
-      </Fragment>
-    );
-  }
-}
+          </>
+        ) : (
+          <h1 className="font-HindSiliguri title text-center text-3xl mb-6">
+            {hijriDate} রমযান আগমনের সম্ভাব্য বাকী
+          </h1>
+        )}
+      </div>
+    </Fragment>
+  );
+};
 
 export default Counter;

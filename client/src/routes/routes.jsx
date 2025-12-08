@@ -13,6 +13,9 @@ import Salat from "../pages/others/salat/Salat";
 import Sawm from "../pages/others/sawm/Sawm";
 import Visual from "../pages/others/salat/visual/Visual";
 import TimeTable from "../pages/others/sawm/TimeTable";
+import Dowa from "../pages/others/sawm/dowa/Dowa";
+import Maswala from "../pages/others/maswala/Maswala";
+import Audio from "../pages/others/audio/Audio";
 
 const router = createBrowserRouter([
   {
@@ -76,11 +79,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/maslaha",
-        element: <CoomingSoon />,
+        element: <Maswala />,
       },
       {
-        path: "/tasbih",
-        element: <CoomingSoon />,
+        path: "/audio",
+        element: <Audio />,
       },
     ],
   },

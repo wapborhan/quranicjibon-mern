@@ -50,9 +50,9 @@ const navMenu = [
     link: "/hajj",
   },
   {
-    title: "মাসলাহ",
+    title: "অডিও",
     icon: GiPrayerBeads,
-    link: "/maslaha",
+    link: "/audio",
   },
 ];
 

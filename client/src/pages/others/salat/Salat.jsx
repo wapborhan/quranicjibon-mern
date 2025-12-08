@@ -67,10 +67,10 @@ const Salat = () => {
       <SalatTime />
       <Rakat />
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
+      {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
         {salatCard &&
           salatCard.map((data) => <Card data={data} key={data._id} />)}
-      </div>
+      </div> */}
       {/* <h1>নামাজের ইতিহাস</h1> */}
     </>
   );
