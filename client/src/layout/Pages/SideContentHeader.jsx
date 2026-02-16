@@ -27,7 +27,7 @@ const SideContentHeader = ({ content, handleListActive }) => {
           })}
       </div>
       <div>
-        <div className="flex justify-between items-center space-x-2 px-3 py-1 m-4 bg-body-grey-bg rounded-lg dark:bg-darkz">
+        <div className="flex justify-between items-center space-x-2 px-3 py-1 mx-2 mb-4 mt-2 bg-body-grey-bg rounded-lg dark:bg-darkz">
           <BiSearch className="text-gray-500" />
           <input
             type="text"

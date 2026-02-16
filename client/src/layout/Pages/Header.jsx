@@ -3,15 +3,11 @@ import { FiAlignJustify, FiAlignLeft } from "react-icons/fi";
 import { LiaSignInAltSolid } from "react-icons/lia";
 import { FaRegUserCircle } from "react-icons/fa";
 import { GoGear } from "react-icons/go";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Header = ({ toggleMobileMenu, mobileMenuActive }) => {
-  const [dark, setDark] = useState(true);
-
-  const toggleDarkMode = () => {
-    setDark(!dark);
-  };
+  const { user } = useAuth();
 
   return (
     <>
@@ -38,30 +34,27 @@ const Header = ({ toggleMobileMenu, mobileMenuActive }) => {
         </h1>
       </div>
       <div className="flex items-center justify-end md-max:gap-4 lg-min:gap-20 2xl-min:gap-5">
-        <div
-          className="rounded-lg  flex items-center justify-center cursor-pointer"
-          onClick={toggleDarkMode}
-        >
-          {dark ? (
-            <>
-              <LiaSignInAltSolid
-                size={35}
-                className="p-1 rounded cursor-pointer text-[#1fa471]"
-              />
-            </>
-          ) : (
-            <>
+        <div className="rounded-lg  flex items-center justify-center cursor-pointer">
+          {user ? (
+            <Link to="/dashboard">
               <FaRegUserCircle
                 size={35}
                 className="p-1 rounded cursor-pointer text-[#1fa471]"
               />
-            </>
+            </Link>
+          ) : (
+            <Link to="/signin">
+              <LiaSignInAltSolid
+                size={35}
+                className="p-1 rounded cursor-pointer text-[#1fa471]"
+              />
+            </Link>
           )}
+          <GoGear
+            size={35}
+            className="p-1 rounded cursor-pointer text-[#1fa471]"
+          />
         </div>
-        <GoGear
-          size={35}
-          className="p-1 rounded cursor-pointer text-[#1fa471]"
-        />
       </div>
     </>
   );

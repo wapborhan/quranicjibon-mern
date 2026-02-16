@@ -77,11 +77,13 @@ input[type="range"] {
 .slick-next {
   display: none !important;
 }
+
 .menu-list {
-  @apply lg:p-3 p-2 hover:bg-gray-100 hover:text-black gap-3 flex items-center;
+  @apply lg:p-3 p-2 hover:bg-gray-100 hover:text-black gap-3 flex items-center rounded-xl;
 }
+
 .sidenav .active {
-  @apply bg-[#0a993c] text-white  hover:text-black rounded-xl;
+  @apply bg-[#0a993c] text-white hover:text-black rounded-xl;
 }
 
 .paginate {
@@ -290,6 +292,7 @@ span {
   align-items: center;
   justify-content: center;
 }
+
 .pl {
   width: 6em;
   height: 6em;
@@ -320,6 +323,7 @@ span {
 
 /* Animations */
 @keyframes ringA {
+
   from,
   4% {
     stroke-dasharray: 0 660;
@@ -367,6 +371,7 @@ span {
 }
 
 @keyframes ringB {
+
   from,
   12% {
     stroke-dasharray: 0 220;
@@ -460,6 +465,7 @@ span {
 }
 
 @keyframes ringD {
+
   from,
   8% {
     stroke-dasharray: 0 440;
@@ -510,6 +516,7 @@ span {
 table {
   width: 100%;
 }
+
 .rakat table th,
 .rakat table td,
 .ramjan table td {
@@ -535,18 +542,36 @@ table {
 .ins-list .text {
   @apply py-3 px-5 text-white rounded-lg text-wrap;
 }
-.ins-list .text ~ span {
+
+.ins-list .text~span {
   @apply col-span-2 text-start;
 }
 
 .quran.details .menu-item {
   @apply p-1 bg-gray-100 border-[1px] flex justify-center items-center flex-col gap-2 text-black hover:bg-[#2b9e76] hover:text-white rounded-lg w-full text-center cursor-pointer;
 }
+
 .quran.details {
   @apply flex flex-col gap-2 transition-all;
 }
+
 .rhap_main-controls-button,
 .rhap_repeat-button,
 .rhap_additional-controls {
   @apply !text-white;
+}
+
+.meter {
+  height: 10px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  background: #0a993c;
+  transition: width 0.2s ease;
 }

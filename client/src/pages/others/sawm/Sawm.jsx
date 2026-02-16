@@ -7,7 +7,7 @@ import Maswala from "../maswala/Maswala";
 // import Maswala from "./Maswala";
 
 const Sawm = () => {
-  const targetDate = "Mar 01, 2025";
+  const targetDate = "Feb 18, 2026";
   const targetTime = "18:25:00";
 
   const salatCard = [
@@ -81,13 +81,13 @@ const Sawm = () => {
 
   return (
     <div className="sawm">
-      <DefaultMeta title="রমযান" />{" "}
-      {/* <Counter targetDate={targetDate} targetTime={targetTime} /> */}
+      {/* <DefaultMeta title="রমযান" />{" "} */}
+      <Counter targetDate={targetDate} targetTime={targetTime} />
       <TimeTable />
-      {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 md:gap-4 py-5">
         {salatCard &&
           salatCard.map((data) => <Card data={data} key={data._id} />)}
-      </div> */}
+      </div>
       <div className="bg-white rounded-lg lg:p-6 p-2 shadow-sm mt-5 space-y-4">
         <h1 className="font-HindSiliguri text-2xl font-bold w-full pb-2">
           মাসলাহ

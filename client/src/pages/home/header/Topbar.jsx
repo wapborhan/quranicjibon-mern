@@ -1,11 +1,16 @@
+import { Link } from "react-router-dom";
 import { timingFormatter } from "../../../components/shared/timingFormatter";
+import useAuth from "../../../hooks/useAuth";
 import usePrayerTime from "../../../hooks/usePrayerTime";
+import { FaRegUserCircle } from "react-icons/fa";
+import { LiaSignInAltSolid } from "react-icons/lia";
 
 const Topbar = () => {
   const [prayerTime] = usePrayerTime({
     latitude: 23.908775911770977,
     longitude: 89.12264749493718,
   });
+  const { user } = useAuth();
 
   const hijriMonths = [
     "",
@@ -23,11 +28,11 @@ const Topbar = () => {
     "জ্বিলহজ্জ", // ১২তম মাস
   ];
   const day = new Intl.NumberFormat("bn-BD").format(
-    prayerTime?.date.hijri?.day
+    prayerTime?.date.hijri?.day,
   );
   const month = hijriMonths[prayerTime?.date.hijri?.month?.number];
   const year = new Intl.NumberFormat("bn-BD", { useGrouping: false }).format(
-    prayerTime?.date.hijri?.year
+    prayerTime?.date.hijri?.year,
   );
 
   const hijriDate = `${day} ${month}, ${year}`;
@@ -50,7 +55,7 @@ const Topbar = () => {
           </span>
         </li>
       </ul>
-      <div className="social-links inline-flex !px-2  text-white">
+      <div className="social-links flex !px-2 gap-5 text-white">
         <div className="dateshow">
           {new Intl.DateTimeFormat("bn-BD-u-ca-islamic", {
             // day: "numeric",
@@ -61,8 +66,25 @@ const Topbar = () => {
             // calendar: "islamic-bangla",
           }).format(Date.now())}
           {`, ${hijriDate}`}
-        </div>{" "}
+        </div>
         <div className="datehide">{`${hijriDate}`}</div>
+      </div>{" "}
+      <div className="profile flex items-center justify-center text-white ms-3">
+        {user ? (
+          <Link to="/dashboard">
+            <FaRegUserCircle
+              size={30}
+              className="p-1 rounded cursor-pointer text-[#1fa471]"
+            />
+          </Link>
+        ) : (
+          <Link to="/signin">
+            <LiaSignInAltSolid
+              size={30}
+              className="p-1 rounded cursor-pointer text-[#1fa471]"
+            />
+          </Link>
+        )}
       </div>
     </div>
   );

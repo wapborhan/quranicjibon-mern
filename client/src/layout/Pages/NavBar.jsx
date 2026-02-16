@@ -2,6 +2,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { TbNumber99Small } from "react-icons/tb";
 import { BiDonateHeart } from "react-icons/bi";
 import { GiBookmarklet, GiPrayerBeads, GiPrayer } from "react-icons/gi";
+import { RxDashboard } from "react-icons/rx";
 import { FaKaaba, FaBookQuran } from "react-icons/fa6";
 import { BsMoonStars } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
@@ -14,12 +15,12 @@ const navMenu = [
     link: "/",
   },
   {
-    title: "আল্লাহ্‌র নাম",
-    icon: TbNumber99Small,
-    link: "/allah-names",
+    title: "দ্যাশবোর্ড",
+    icon: RxDashboard,
+    link: "/dashboard",
   },
   {
-    title: "কুরআন",
+    title: "আল কুরআন",
     icon: FaBookQuran,
     link: "/quran",
   },
@@ -48,11 +49,6 @@ const navMenu = [
     title: "হজ্জ",
     icon: FaKaaba,
     link: "/hajj",
-  },
-  {
-    title: "অডিও",
-    icon: GiPrayerBeads,
-    link: "/audio",
   },
 ];
 
